@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Klloom_AbuseReport::reports" title="Abuse Report" module="Klloom_AbuseReport" sortOrder="51" resource="Klloom_AbuseReport::product"/>
+
+        <add id="Klloom_AbuseReport::post" title="Reports"
+             module="Klloom_AbuseReport" sortOrder="10"
+             action="klloom_abusereport/post"
+             resource="Klloom_AbuseReport::post"
+             parent="Klloom_AbuseReport::reports"/>
+
+        <add id="Klloom_AbuseReport::settings" title="Configuration"
+             module="Klloom_AbuseReport" sortOrder="10"
+             action="adminhtml/system_config/edit/section/abuse"
+             resource="Klloom_AbuseReport::settings"
+             parent="Klloom_AbuseReport::reports"/>
+    </menu>
+</config>

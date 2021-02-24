@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+
+    <widget class="Klloom\Pages\Block\Widget\CauseAndEffect" id="klloom_cms_page_cause_and_effect">
+        <label>Cause and Effect</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\HowItWorks" id="klloom_cms_page_how_it_works">
+        <label>How It Works</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\Manifest" id="klloom_cms_page_manifest">
+        <label>Manifest</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\About" id="klloom_cms_page_about">
+        <label>About Klloom</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\BehaviorGuidelines" id="klloom_cms_page_behavior_guidelines">
+        <label>Klloom Behavior Guidelines</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\ContributorAgreement" id="klloom_cms_page_contributor_agreement">
+        <label>Klloom Contributor Agreement</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\LicenseAgreement" id="klloom_cms_page_license_agreement">
+        <label>Klloom License Agreement</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\PrivacyPolicy" id="klloom_cms_page_privacy_policy">
+        <label>Klloom Privacy Policy</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\Terms" id="klloom_cms_page_terms">
+        <label>Klloom Terms of Use</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\Faq" id="klloom_cms_page_faq">
+        <label>Klloom FAQ</label>
+        <description></description>
+    </widget>
+    <widget class="Klloom\Pages\Block\Widget\NoRoute" id="klloom_cms_page_no_route">
+        <label>Klloom 404</label>
+        <description></description>
+    </widget>
+
+</widgets>

@@ -1,0 +1,53 @@
+<div class="customcomponent-wrapper" data-block="customcomponent" style="margin-top: 15px">
+
+    <div class="block-content">
+        <form style="display: block;padding-bottom: 20px;" class="comment-form" data-role="save" data-bind="submit:save" method="post" data-hasrequired="* Required Fields" data-mage-init='{"validation":{}}'>
+            <table>
+                <tr>
+                    <td style="width: 38px; vertical-align: top">
+                        <label for="comment_field" class="label" style="float: left;display: inline-block;">
+                            <i class="material-icons mdl-list__item-avatar photographer-avatar" data-bind="style: { backgroundImage: 'url(' + currentAvatar() + ')' }"></i>
+                        </label>
+                    </td>
+                    <td>
+                        <textarea placeholder="Comment" name="comment" id="comment_field" rows="1"
+                                  afterRender="textAreaBehavior()"
+                                  data-validate="{required:true}"
+                                  data-bind="enable: isEnabled()"></textarea>
+                    </td>
+                    <td style="width: 90px; vertical-align: bottom; padding-bottom: 6px;">
+                        <button data-bind="enable: isEnabled()" type="submit" class="klloom-flat-button"><span data-bind="i18n: 'Comment'"></span></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: right"><p class="char-left"></p></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="klloom-hr" data-bind="visible:isVisible"></div>
+
+    <table id="comments-list" style="margin-top: 28px">
+        <tbody data-bind="foreach: getComments()">
+        <tr>
+            <td style="width: 38px; vertical-align: top">
+                <i class="material-icons mdl-list__item-avatar photographer-avatar" data-bind="style: { backgroundImage: 'url(' + avatar + ')' }"></i>
+            </td>
+            <td class="info-column">
+                <a data-bind="text:username, attr:{href:profile}" class="comment-customer-name"></a>
+                <span class="comment-date" data-bind="text: created"></span>
+                <p class="comment-comment" data-bind="html: comment"></p>
+            </td>
+            <td class="actions-column">
+                <div data-bind="if: canRemove">
+                    <a data-bind="click:$parent.removeComment, attr:{href: canRemove}"><i class="material-icons">close</i></a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

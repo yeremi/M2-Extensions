@@ -1,0 +1,18 @@
+<?php
+$isPurchased = $block->isPurchased();
+$isInCart    = $block->isInCartSession();
+
+if ($isPurchased) {
+    $linkToDownload = $block->getUrl('downloadable/customer/products', ['_secure' => $this->getRequest()->isSecure()]);
+    ?>
+    <p>
+        <a href="<?php echo $linkToDownload; ?>" style="color: #35a8e0; font-size: 1.2rem;top: 2px;position: relative;">Download</a>
+        <a href="<?php echo $linkToDownload; ?>" style="color: #35a8e0;"><i class="icon-buy-klloom"></i></a>
+    </p>
+<?php }
+if ($isInCart) { ?>
+    <p>
+        <a href="javascript:;" style="color: #f29100; font-size: 1.2rem;top: 1px;position: relative;">In the cart</a>
+        <a href="javascript:;" style="color: #f29100;"><i class="icon-shopping-cart-klloom"></i></a>
+    </p>
+<?php } ?>

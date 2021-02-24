@@ -1,0 +1,45 @@
+deploy to infra:
+  environment: infra
+  image: #image_name
+  script:
+  - export AWS_ACCESS_KEY_ID=$DEVAWSID
+  - export AWS_SECRET_ACCESS_KEY=$DEVAWSKEY
+  - export S3_BUCKET_NAME=$DEVBUCKET
+  - export AWS_DEFAULT_REGION=$REGIAO
+  - export APPNAME=$DEVAPPNAME
+  - export DGNAME=$DEVAPPNAME
+  - pip install awscli
+  - aws deploy push --application-name $APPNAME --s3-location s3://$S3_BUCKET_NAME/deploy/$APPNAME.zip
+  - aws deploy create-deployment --application-name $APPNAME --s3-location bucket=$S3_BUCKET_NAME,key=deploy/$APPNAME.zip,bundleType=zip --deployment-group-name $DGNAME --deployment-config-name  CodeDeployDefault.OneAtATime --description "Deploy $APPNAME - $(date) - revision $CI_BUILD_REF"
+  only:
+  - web
+deploy to dev:
+  environment: develop
+  image: #image_name
+  script:
+  - export AWS_ACCESS_KEY_ID=$DEVAWSID
+  - export AWS_SECRET_ACCESS_KEY=$DEVAWSKEY
+  - export S3_BUCKET_NAME=$DEVBUCKET
+  - export AWS_DEFAULT_REGION=$REGIAO
+  - export APPNAME=$DEVAPPNAME
+  - export DGNAME=$DEVAPPNAME
+  #- pip install awscli
+  - aws deploy push --application-name $APPNAME --s3-location s3://$S3_BUCKET_NAME/deploy/$APPNAME.zip
+  - aws deploy create-deployment --application-name $APPNAME --s3-location bucket=$S3_BUCKET_NAME,key=deploy/$APPNAME.zip,bundleType=zip --deployment-group-name $DGNAME --deployment-config-name  CodeDeployDefault.OneAtATime --description "Deploy $APPNAME - $(date) - revision $CI_BUILD_REF"
+  only:
+  - develop
+deploy to prod:
+  environment: producao
+  image: #image_name
+  script:
+  - export AWS_ACCESS_KEY_ID=$PRODAWSID
+  - export AWS_SECRET_ACCESS_KEY=$PRODAWSKEY
+  - export S3_BUCKET_NAME=$PRODBUCKET
+  - export AWS_DEFAULT_REGION=$REGIAO
+  - export APPNAME=$PRODAPPNAME
+  - export DGNAME=$PRODAPPNAME
+  - ZIPNAME=$APPNAME-$CI_COMMIT_TAG
+  - aws deploy push --application-name $APPNAME --s3-location s3://$S3_BUCKET_NAME/deploy/$ZIPNAME.zip
+  - aws deploy create-deployment --application-name $APPNAME --s3-location bucket=$S3_BUCKET_NAME,key=deploy/$ZIPNAME.zip,bundleType=zip --deployment-group-name $DGNAME --deployment-config-name  CodeDeployDefault.OneAtATime --description "Deploy $APPNAME - $(date) - revision $ZIPNAME"
+  only:
+  - tags

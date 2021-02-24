@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <block class="Klloom\Pages\Block\Link" name="top.link.item">
+            <arguments>
+                <argument name="class" xsi:type="string">about link mdl-cell--hide-phone</argument>
+                <argument name="label" xsi:type="string" translate="true">About</argument>
+                <argument name="path" xsi:type="string">about</argument>
+            </arguments>
+        </block>
+        <move element="top.link.item" destination="header-wrapper" after="minicart"/>
+    </body>
+</page>

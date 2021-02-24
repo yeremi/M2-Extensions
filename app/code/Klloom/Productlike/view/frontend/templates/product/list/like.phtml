@@ -1,0 +1,99 @@
+<?php
+/**
+ * TODO IMPORTANT
+ * This icons will be displayed in all pages
+ * You can found all file to be display this icons searching for files withe the following text: "TODO AMIT Here will be showed ths icons"
+ *
+ *
+ * TODO AMIT LIKES
+ * When user is logged in:
+ * 1. When click on heart icon change the classname icon-like-klloom to icon-like-active-klloom
+ *      - icon-like-klloom is for non likes
+ *      - icon-like-active-klloom is for liked
+ * 2. Save/Update on database (using ajax behavior)
+ *
+ * When user is NOT logged in:
+ * - Whe user click open a popup just with a link white a message.
+ *      You can see this behavior on app/design/frontend/Klloom/klloom/Magento_Theme/templates/html/copyright.phtml
+ * - After mouseout from heart icon, back to like information.
+ */
+
+/**
+ * TODO AMIT
+ * Show total number of likes
+ */
+$customersLikes = $block->getCustomerLikesByProductId();
+$helper         = $this->helper('Webkul\Marketplace\Helper\Data');
+$likeUrl        = $block->getLikeUrl() ? $block->escapeUrl($block->getLikeUrl()) : 'javascript:;';
+
+$likeClass = 'icon-like-klloom';
+if ($block->isLiked($block->getProductItemData()->getId())) {
+    $likeClass = 'icon-like-active-klloom';
+}
+?>
+
+
+    <a href="javascript:;"
+       data-pcounter="<?= $block->getProductItemData()->getId() ?>"
+       data-url-like="<?= $likeUrl; ?>"
+       class="klloom-action-like like-not-loggedin btn-add action add <?= $likeClass ?>"></a>
+
+    <a href="javascript:;" class="klloom-tooltip counter-number-small likes-counter-<?= $block->getProductItemData()->getId() ?>"><?= $block->getTotalLikesByProductId()->count(); ?></a>
+
+<?php if ($customersLikes->count() < 1) { ?>
+
+    <div class="webui-popover-content">
+        <span class="likes-counter-<?= $block->getProductItemData()->getId() ?>">0</span><?= __(' Likes') ?>
+        <?php if (!$block->isLoggin()) { ?>
+            <div class="klloom-hr" style="margin: 12px 0"></div>
+            <p style="color: #000">You need to be logged in, <a href="<?= $block->escapeUrl($block->getUrl('customer/account/login')); ?>">click here to Log In</a>.</p>
+        <?php } ?>
+    </div>
+
+<?php } else { ?>
+
+    <div class="klloom-popup-wrapper webui-popover-content">
+        <div class="kp-inner">
+
+            <?php $likes_string = $customersLikes->count() > 1 ? 'Likes' : 'Like'; ?>
+            <div class="kp-header"><span class="likes-counter-<?= $block->getProductItemData()->getId() ?>"><?= $block->getTotalLikesByProductId()->count(); ?></span> <?= __($likes_string) ?>
+                <a style="float: right" href="<?= $block->getProductItemData()->getProductUrl() ?>"><?= __('View All') ?></a>
+            </div>
+
+            <div class="klloom-hr" style="margin: 12px 0"></div>
+
+            <div class="klloom-mini-likes mdl-list">
+                <?php
+                /**
+                 * TODO AMIT:
+                 * Show the 3 last photographers who likes this photo
+                 * Show the photo profile of each photographer
+                 * Show how many photos he has and add the url for his public profile
+                 *
+                 */
+                foreach ($customersLikes as $customer) {
+                    $sellerdata    = $block->getSellerShopDetails($customer->getData('entity_id'));
+                    $sellershopurl = '';
+                    if ($sellerdata == false) {
+                        $sellershopurl = '#';
+                    } else {
+                        $sellershopurl = $helper->getRewriteUrl('marketplace/seller/profile/shop/' . $sellerdata->getData('shop_url'));
+                    }
+                    //$avatarLogo = $block->AvatarLogoPic($sellerdata);
+                    $avatarLogo = $block->avatar($customer->getData('entity_id'));
+
+                    $totalPhotos        = $block->getSellerProductCount($customer->getData('entity_id'));
+                    $totalPhotos_string = $totalPhotos > 1 ? 'photos' : 'photo';
+                    ?>
+                    <div class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-avatar" style="background-image: url('<?= $avatarLogo ?>'); margin-bottom:0"></i>
+                                <span>@<?= $sellerdata->getData('shop_url'); ?></span>
+                            </span>
+                        <a class="mdl-list__item-secondary-action" href="<?= $sellershopurl; ?>"><?= $totalPhotos ?> <?= __($totalPhotos_string) ?></a>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>

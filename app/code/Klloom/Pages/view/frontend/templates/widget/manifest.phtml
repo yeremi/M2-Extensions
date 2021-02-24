@@ -1,0 +1,4 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+$redirect->setRedirect('/about');

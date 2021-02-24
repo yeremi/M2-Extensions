@@ -1,0 +1,121 @@
+<?php
+$comments = $block->getCommentCollection();
+//echo get_class($block);
+//print_r($block->getSaleableItems()->getData());
+?>
+<div class="actions-secondary" data-role="add-to-links">
+
+    <?php
+    /**
+     * TODO IMPORTANT
+     * This icons will be displayed in all pages
+     * You can found all file to be display this icons searching for files withe the following text: "TODO AMIT Here will be showed ths icons"
+     *
+     *
+     * TODO AMIT LIKES
+     * When user is logged in:
+     * 1. When click on heart icon change the classname icon-like-klloom to icon-like-active-klloom
+     *      - icon-like-klloom is for non likes
+     *      - icon-like-active-klloom is for liked
+     * 2. Save/Update on database (using ajax behavior)
+     *
+     * When user is NOT logged in:
+     * - Whe user click open a popup just with a link white a message.
+     *      You can see this behavior on app/design/frontend/Klloom/klloom/Magento_Theme/templates/html/copyright.phtml
+     * - After mouseout from heart icon, back to like information.
+     */
+
+    /**
+     * TODO AMIT
+     * Show total number of likes
+     */
+    $likes = rand(3,5);
+    ?>
+    <a href="<?= $block->escapeUrl($block->getUrl('customer/account/login')); ?>" class="like-not-loggedin btn-add action add icon-like-klloom klloom-tooltip"></a>
+    <?php  $block->getProductItemData()->getId();
+    $blockObj= $block->getLayout()->createBlock('Klloom\Productlike\Block\Countlink')
+        ->setData('product',$block->getProductItemData())
+    ->setTemplate("Klloom_Productlike::like.phtml");
+   echo $blockObj->toHtml();
+    ?>
+
+
+
+    <?php
+    /**
+     * TODO AMIT COMMENTS
+     * Right now the content bellow is for testing but need to be developing, ok?
+     *
+     * 1. Show the total comments number
+     * 2. Show the last 3 comments
+     * 3. Limit comments to 95 characters
+     * 4. Display the photo profile of user who commented
+     * 5. Display the user name
+     *
+     */
+    // TODO COMMENTS #1
+    //$comments = rand(0,2); //Total comments
+    ?>
+    <a href="javascript:;" class="klloom-tooltip icon-comment-klloom" data-action="comment"></a>
+
+    <?php if (!$comments ||  $comments->count()<1) {  ?>
+        <div class="webui-popover-content">
+            <?= /* @escapeNotVerified */ __('0 Comment') ?> <a style="float: right" href="<?= /* @escapeNotVerified */ $block->getProductItemData()->getProductUrl() ?>"><?= /* @escapeNotVerified */ __('Add Comment') ?></a>
+        </div>
+    <?php } else {  ?>
+        <div class="klloom-popup-wrapper webui-popover-content">
+            <div class="kp-inner">
+                <?php
+                $lastComment = $comments->getFirstItem();
+                ?>
+                <div class="kp-header"><?= /* @escapeNotVerified */$lastComment->getTotalCount() . __(' Comments') ?>
+                    <a style="float: right" href="<?= /* @escapeNotVerified */ $block->getProductItemData()->getProductUrl() ?>"><?= /* @escapeNotVerified */ __('View All') ?></a>
+
+                </div>
+
+                <div class="klloom-hr" style="margin: 12px 0"></div>
+
+                <p style="padding: 5px 8px 8px 8px"><?= /* @escapeNotVerified */ __('Last comments') ?></p>
+                <ul class="klloom-mini-comment mdl-list">
+                    <?php
+                    // TODO COMMENTS #2
+                    // the comments looping
+                    //for ($i = 0; $i < ($comments > 3 ? 3 : $comments); $i++) {
+                    // $comment = $this->helper('Klloom\Pages\Helper\LoremIpsum')->words(20);
+                    ?>
+                    <li class="mdl-list__item mdl-list__item--three-line">
+                            <span class="mdl-list__item-primary-content">
+                              <i class="material-icons mdl-list__item-avatar" style="background-image: url(<?php // TODO COMMENTS #4 ?>'http://urbano.topfas.com.br/avatar/100000269922613.jpg')"></i>
+                              <span class="mdl-list__item-text-body">
+                                <span style="color: #000000"><?php // TODO COMMENTS #5 ?><?= $lastComment->getSellerShopTitle(); ?></span>
+                                  <?php // TODO COMMENTS #3
+                                  echo $this->helper('Klloom\Pages\Helper\StringHelper')->trim_text($lastComment->getComment(), 95); ?>
+                              </span>
+                            </span>
+                    </li>
+                    <?php //} ?>
+                </ul>
+
+                <div class="klloom-hr" style="margin: 12px 0; margin-top:21px"></div>
+
+                <a style="text-align: center;display: block;padding: 8px;margin-bottom: 4px; font-size: 12px" href="<?php //TODO AMIT: Link do current photo page ?>"><?= /* @escapeNotVerified */ __('Add Comment') ?></a>
+
+            </div>
+        </div>
+    <?php } ?>
+
+    <?php
+    /**
+     * TODO AMIT TAGS
+     * Show tags just if has tags
+     */ ?>
+    <a href="javascript:;" class="klloom-tooltip icon-tag-klloom" data-action="tags"></a>
+    <div class="webui-popover-content" style="color:#000">
+        <?php
+        $tags=$block->getProductTags();
+        $helper = $this->helper(\Magento\Search\Helper\Data::class);
+        foreach ($tags as $tag) {?>
+            <a href='<?= $helper->getResultUrl() ?>?q=<?= $tag;?>'><?= $tag;?></a>,
+        <?php } ?>
+    </div>
+</div>

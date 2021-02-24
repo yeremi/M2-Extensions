@@ -1,0 +1,28 @@
+<?php
+$productId  = $this->getCurrentProduct()->getId();
+$customerId = $this->isLoggedIn();
+$form_key   = $this->getFormKey();
+$login_url  = $this->loginUrl();
+$template   = $customerId ? 'Klloom_ProductComments/comment' : 'Klloom_ProductComments/no-comment';
+?>
+<div id="comment-component" data-bind="scope:'commentcomponent'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#comment-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "commentcomponent": {
+                        "currentSellerAvatar" :  "<?= $this->getCurrentSellerAvatar(); ?>",
+                        "product"  : "<?= $productId; ?>",
+                        "form_key" : "<?= $form_key; ?>",
+                        "template" : "<?= $template ?>",
+                        "loginUrl" : "<?= $login_url ?>",
+                        "component": "Klloom_ProductComments/js/comment-component"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>

@@ -1,0 +1,34 @@
+<!--@subject {{trans "Report Notification"}} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p style="color: #000; font-size: 14px">Report Notification</p>
+<br/>
+<p style="color: #6F6C6C">
+    The following photo of yours was reported as inappropriate. <span style="color: #000000">Reason:</span> <span style="color: #35a8e0">{{var report_type}}</span><br/>
+</p>
+<br/>
+<p style="color: #000">Photo: <span style="color: #35a8e0">{{var photo_name}}</span></p>
+<br/>
+<p style="color: #6F6C6C">
+    <img src="{{var photo_src}}" width="100%"/>
+</p>
+<br/>
+<p style="color: #6F6C6C">The reported photo will remain private for <span style="color: #000000">60 days</span>. After that period, it will be deleted automatically from Klloom. If you feel that your Content is not infringing, you may provide Klloom with a counter notice by writing to <a href="mailto:report@klloom.com" title="report@klloom.com" style="color: #35a8e0">report@klloom.com</a>.</p>
+<br/>
+<p style="font-size: 12px; border-top: solid 1px #ccc; color: #6F6C6C">
+    <br />
+Klloom doesn't curate any photos beforehand. Instead, we trust and depend on our user community’s wisdom and reasonableness to identify, judge, rate and report the content that may be inappropriate, offensive or not in accordance with our Terms, our Behavior Guidelines or that is not up to our quality standards. By using Klloom, you must adhere to these guidelines.
+    <br /><br />
+</p>
+
+<p style="font-size: 12px">
+    <a href="https://www.klloom.com/terms-of-use" style="color: #35a8e0" title="Terms of Use">Terms of Use</a> /
+    <a href="https://www.klloom.com/behavior-guidelines" style="color: #35a8e0" title="Behaviour Guidelines">Behaviour Guidelines</a> /
+    <a href="https://www.klloom.com/faq" style="color: #35a8e0" title="Klloom FAQ">FAQ</a> /
+    <a href="https://www.klloom.com/privacy-policy" style="color: #35a8e0" title="Privacy Policy">Privacy Policy</a> /
+    <a href="https://www.klloom.com/contributor-agreement" style="color: #35a8e0" title="Contributor Agreement">Contributor Agreement</a> /
+    <a href="https://www.klloom.com/license-agreement" style="color: #35a8e0" title="License Agreement">License Agreement</a>
+</p>
+
+{{template config_path="design/email/footer_template"}}

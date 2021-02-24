@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <container name="klloom.related" htmlTag="div" htmlClass="klloom-relate-photographer" after="-">
+            <!--<block class="Klloom\Related\Block\Product\View\Related\Photographer" name="klloom.related.photographer" template="Klloom_Related::product/view/byPhotographer.phtml" cacheable="false"/>
+            <block class="Klloom\Related\Block\Product\View\Related\PhotoCategory" name="klloom.related.category" template="Klloom_Related::product/view/byPhotoCategory.phtml" cacheable="false"/>-->
+            <block class="Klloom\Related\Block\Product\View\Related\Related" name="klloom.related.page" template="Klloom_Related::product/view/related.phtml" cacheable="false"/>
+        </container>
+
+        <move element="klloom.related" destination="page.wrapper" after="main.content"/>
+    </body>
+</page>

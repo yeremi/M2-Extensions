@@ -1,0 +1,64 @@
+<div class="klloom-report-wrap mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--1-col-phone mdl-cell--middle" style="text-align: right">
+     <a href="javascript:;" class="klloom-report-tooltip" id="" data-width="230"><?= /* @escapeNotVerified */ __('Report') ?> <i class="icon-report-klloom"></i></a>
+    <div class="klloom-popup-wrapper webui-popover-content">
+        <span style="color: #000000;font-size: 1.4rem; padding: 6px 0 12px 0; display: inline-block;"><?= /* @escapeNotVerified */ __('Report this image:') ?></span>
+        <hr style="padding: 0;margin: 0 0 0 -8px;width: 238px;"/>
+        <p style="margin-top: 12px">
+            <a href="javascript:;" class="report-item" data-report="<?= /* @escapeNotVerified */ __('Adult content (NSFW)') ?>"><?= /* @escapeNotVerified */ __('Adult content (NSFW)') ?></a>
+            <a href="javascript:;" class="report-item" data-report="<?= /* @escapeNotVerified */ __('Offensive (obscene, rude)') ?>"><?= /* @escapeNotVerified */ __('Offensive (obscene, rude)') ?></a>
+            <a href="javascript:;" class="report-item" data-report="<?= /* @escapeNotVerified */ __('Copyright issues') ?>"><?= /* @escapeNotVerified */ __('Copyright issues') ?></a>
+            <a href="javascript:;" class="report-item" data-report="<?= /* @escapeNotVerified */ __('Offtopic (trolling)') ?>"><?= /* @escapeNotVerified */ __('Offtopic (trolling)') ?></a>
+            <a href="javascript:;" class="report-item" data-report="<?= /* @escapeNotVerified */ __('Spam (ads)') ?>"><?= /* @escapeNotVerified */ __('Spam (ads)') ?></a>
+            <a href="javascript:;" class="report-item" data-report="<?= /* @escapeNotVerified */ __('Wrong content (3D, illustration)') ?>"><?= /* @escapeNotVerified */ __('Wrong content (3D, illustration)') ?></a>
+            <a href="javascript:;" class="report-item" data-report="<?= /* @escapeNotVerified */ __('Not up to quality standards') ?>"><?= /* @escapeNotVerified */ __('Not up to quality standards') ?></a>
+        </p>
+    </div>
+</div>
+
+<style>
+    .klloom-report-wrap .icon-report-klloom {
+        font-size: 2.5rem;
+        float: right;
+        margin-left: 8px;
+    }
+
+    .klloom-report-wrap .klloom-report-tooltip {
+        color: #000;
+        text-transform: uppercase;
+        font-size: 1rem;
+        line-height: 27px;
+        height: 27px;
+        display: inline-block;
+    }
+
+    .webui-popover-klloom-report .klloom-popup-wrapper p a {
+        display: block !important;
+        margin: 3px 0;
+    }
+
+    .webui-popover-klloom-report .klloom-popup-wrapper p a:hover {
+        color: #000;
+    }
+
+    .webui-popover-klloom-report .close {
+        position: absolute;
+        right: 0;
+        top: 10px;
+    }
+</style>
+<?php
+$url  = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+$login_url = $block->getUrl('customer/account/login', array('referer' => base64_encode($url)));
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Klloom_AbuseReport/js/abuse_report": {
+            "ajaxUrl"   : "<?= $this->getAjaxUrl() ?>",
+            "productId" : "<?= $this->getCurrentProduct()->getId() ?>",
+            "loader"    : {},
+            "redirect" : "<?= $login_url ?>"
+        }
+    }
+}
+</script>

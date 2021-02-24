@@ -1,0 +1,122 @@
+<style>
+    .klloom-banner-opacity {
+        /*background-color: rgba(0, 0, 0, 0.60);*/
+    }
+
+    .page-full-background {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom center;;
+    }
+
+    .about-01 {
+        background-image: url(<?php echo $this->getViewFileUrl('Klloom_Pages::images/backgrounds/klloom-about-01.jpg'); ?>);
+        min-height: 400px;
+    }
+
+    body.contact-index-index .related-page-links a {
+        color: #fff;
+    }
+    body.contact-index-index .klloom-title-wrapper .page-title{color: #ffffff}
+    body.contact-index-index .klloom-title-wrapper .page-title span {
+        color: #35a8e0
+    }
+
+    .sub-title {
+        font-size: 60px;
+        line-height: 65px;
+        color: #b8b8b8;
+        margin-bottom: 0;
+    }
+
+    body.contact-index-index main#maincontent {
+        padding: 0;
+    }
+
+    .hero {
+        min-height: 410px;
+    }
+
+    @media (max-width: 839px) and (min-width: 480px) {
+        .hero {
+            min-height: 310px;
+        }
+    }
+
+    @media (min-width: 768px) {
+
+        body.contact-index-index main#maincontent {
+            width: 650px;
+            margin: auto;
+            border-left: solid 1px #c6c6c5;
+            border-right: solid 1px #c6c6c5;
+        }
+
+        body.contact-index-index .page-title-wrapper {
+            padding: 50px 50px 10px;
+        }
+
+        body.contact-index-index .page-title-wrapper a {
+            display: inline-block;
+            float: right;
+            height: 37px;
+            line-height: 53px;
+        }
+
+        body.contact-index-index form.form.contact {
+            padding: 50px;
+        }
+    }
+
+    /** Phone **/
+    @media (max-width: 479px) {
+        body.contact-index-index .klloom-content-wrapper {
+            padding: inherit;
+        }
+
+        body.contact-index-index form.form.contact,
+        body.contact-index-index .page-title-wrapper {
+            padding: 20px;
+        }
+
+        .hero {
+            min-height: 210px;
+        }
+
+        .mdl-grid.mdl-grid--no-spacing {
+            margin: 8px;
+            padding: 8px;
+        }
+
+        .sub-title {
+            font-size: 40px;
+            line-height: 40px;
+        }
+    }
+</style>
+<div class="page-full-background about-01 bg-page-gray">
+    <div class="klloom-title-wrapper">
+        <div class="mdl-grid mdl-grid--no-spacing" style="min-height: 400px;">
+            <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet mdl-cell--2-col-tablet mdl-cell--2-col-phone mdl-cell--middle">
+                <h1 class="page-title"><span>Contact</span> Klloom</h1>
+            </div>
+            <?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Klloom_Pages::html/menu-about.phtml")->toHtml(); ?>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="klloom-content-wrapper">
+        <div class="hero mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--7-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--middle">
+                <p class="sub-title">We need your feedback to build a healthy community.</p>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone mdl-cell--middle mdl-typography--text-right">
+                <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/about-graphic-04.svg'); ?>" style="width: 200px"/>
+                <p>We are and will always be in Beta.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-hr"></div>

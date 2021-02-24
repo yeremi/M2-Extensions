@@ -1,0 +1,23 @@
+<?php
+$product_id   = $this->getRequest()->getParam('id');
+$agreement = $block->getParentBlock()->getProduct($product_id)->getTermsAgreement();
+?>
+<style>
+    .klloom_contract.choice label:after{
+        margin: 0 !important;
+    }
+</style>
+<fieldset class="fieldset" style="margin-top: 20px; display: none; font-size: 1.3rem" id="klloom_contract">
+    <div class="field choice required klloom_contract">
+        <input type="checkbox" name="product[terms_agreement]" title="<?= $block->escapeHtmlAttr(__('Terms Agreement')) ?>" value="1" id="klloom_contract_input" class="checkbox required-entry" data-validate="{required:true}" <?= ($agreement) ? 'checked' : '' ?>>
+        <label for="klloom_contract_input" class="label"></label>
+        By checking this box, you agree to the terms of the <a href="<?= $block->escapeUrl($block->getUrl('contributor-agreement')); ?>" target="_blank" title="Contributor Agreement">Contributor Agreement</a> and to our <a href="<?= $block->escapeUrl($block->getUrl('license-agreement')); ?>" target="_blank" title="License Agreement">License Agreement</a>, and state that you own all rights to license the content you are submitting.
+    </div>
+</fieldset>
+<script type="text/x-magento-init">
+{ "*": 
+    {
+        "Klloom_Contract/js/klloom_contract": {}
+    }
+}
+</script>

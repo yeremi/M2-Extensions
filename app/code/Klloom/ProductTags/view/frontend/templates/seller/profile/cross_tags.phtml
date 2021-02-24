@@ -1,0 +1,210 @@
+<?php
+/**
+ * @var \Klloom\ProductTags\Block\CrossTags $block
+ */
+
+$_helperW     = $this->helper('Webkul\Marketplace\Helper\Data');
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+$items        = $block->getPhotosByCrossTags();
+$image        = 'new_products_content_widget_grid';
+
+/**
+ * Default Avatar
+ */
+$avatar             = $this->getViewFileUrl('images/avatar/no-image.svg');
+
+/**
+ * Profile
+ */
+$_blockProfile    = $block->getLayout()->createBlock('Webkul\Marketplace\Block\Profile');
+$partner          = $_blockProfile->getProfileDetail();
+$sellerId         = $partner->getSellerId();
+$currentShoptitle = $block->escapeHtml($partner->getShopTitle());
+if (!$currentShoptitle) {
+    $currentShoptitle = $shopUrl;
+}
+
+/**
+ * Get photos collection marked as hidden
+ */
+$hiddenItemsCollection = $block->getHiddenPhotos($sellerId);
+$hiddenPhotos          = [];
+if ($hiddenItemsCollection) {
+    foreach ($hiddenItemsCollection as $_hitem) {
+        $hiddenPhotos[] = $_hitem->getProductId() . '<br />';
+    }
+}
+
+/**
+ * Get All Photos Collection
+ */
+$tagsItensArray = [];
+$showItem       = [];
+if ($items) {
+    foreach ($items as $_item) {
+        $tagsArray      = explode(',', $_item->getData('tags'));
+        $tagsArray      = array_map('trim', $tagsArray);
+        $tagsItensArray = array_filter($tagsArray);
+
+        if (in_array($currentShoptitle, $tagsItensArray) AND !in_array((int)$_item->getId(), $hiddenPhotos)) {
+            $showItem[] = $_item->getId();
+        }
+    }
+}
+
+// http://apps.eky.hk/css-triangle-generator/
+if ($showItem) {
+    $ObjectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $context       = $ObjectManager->get('Magento\Framework\App\Http\Context');
+    $isLoggedIn    = $context->getValue(\Magento\Customer\Model\Context::CONTEXT_AUTH);
+    $url           = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+    $login_url     = $block->getUrl('customer/account/login', array('referer' => base64_encode($url)));
+    ?>
+
+    <style>
+        .klloom_triangle{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 38px 38px 0;
+            border-color: transparent #35a7e0 transparent transparent;
+            line-height: 0px;
+            _border-color: #000000 #35a7e0 #000000 #000000;
+            _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+        }
+
+        .klloom_triangle:after {
+            content: "#";
+            text-align: center;
+            margin-left: 0;
+            position: absolute;
+            right: -32px;
+            top: 13px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .info-hashtags {
+            font-size: 12px;
+            text-align: right;
+            color: #9a9a9a;
+        }
+
+        /* Phone */
+        @media (max-width: 479px) {
+            .info-hashtags {
+                text-align: left;
+            }
+        }
+    </style>
+
+    <div class="klloom-hr"></div>
+
+    <div class="wk-mp-collection-container" style="padding-top: 0">
+
+        <div class="block-content">
+
+            <div class="mdl-grid" style="margin-bottom: 20px;padding-left: 0;">
+                <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <h4 style="margin: 0px; padding: 0; font-size: 16px">Hashtag Mentions to <span style="color: #35a8e0">@<?php echo $currentShoptitle; ?></span></h4>
+                </div>
+                <?php if ($sellerId === $_helperW->getCustomerId()) { ?>
+                    <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone info-hashtags">
+                        Photos that were marked with #<?php echo $currentShoptitle; ?> appear here. You can hide them by clicking the "Remove Mention" button.
+                    </div>
+                <?php } ?>
+            </div>
+
+            <div class="products-grid grid">
+                <div class="mdl-grid mdl-grid--no-spacing klloom-grid">
+
+                    <?php
+                    if ($items) {
+                        foreach ($items as $_item) {
+
+                            if (in_array($_item->getId(), $showItem)) {
+
+                                $productImage       = $_imagehelper->init($_item, $image)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300)->getUrl();
+                                $seller_id          = false;
+                                $shoptitle          = '';
+                                $shopUrl            = '';
+                                $marketplaceProduct = $_helperW->getSellerProductDataByProductId((int)$_item->getId());
+
+                                foreach ($marketplaceProduct as $value) {
+                                    $seller_id = $value['seller_id'];
+                                }
+                                if ($seller_id) {
+                                    $rowsocial = $_helperW->getSellerDataBySellerId($seller_id);
+                                    foreach ($rowsocial as $seller) {
+                                        if (!empty($seller['shop_title'])) {
+                                            $shoptitle = '@' . $seller['shop_title'];
+                                            $shopUrl   = $seller['shop_url'];
+                                        }
+                                        if ($seller->getLogoPic()) {
+                                            $logoPic = str_replace('.', '-small.', $seller->getLogoPic());
+                                            $avatar  = $_helperW->getMediaUrl() . 'avatar/thumb' . $logoPic;
+                                        }
+                                    }
+                                }
+                                $shop_url = $_helperW->getRewriteUrl('marketplace/seller/profile/shop/' . $shopUrl);
+                                ?>
+                                <div data-price="<?= $_item->getFinalPrice() ?>" data-license="<?= $_item->getKlloomLicense() ?>" id="<?= $_item->getId(); ?>" class="klloom-grid-item mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone <?= 'license-' . $_item->getKlloomLicense(); ?> <?= 'price-' . $_item->getFinalPrice(); ?>">
+                                    <?php if ($sellerId === $_helperW->getCustomerId()) { ?>
+                                        <div class="mdl-typography--text-right">
+                                            <a class="klloom-remove-mention" data-pi="<?php echo $_item->getId(); ?>" href="javascript:;" style="color: #9a9a9a;font-size: 11px;display: inline-block;margin-bottom: 8px;">
+                                                Remove Mention
+                                                <i class="icon-close-klloom" style="font-size: 30px;color: #35a8e0;top: 9px;position: relative;"></i>
+                                            </a>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="product-item-info">
+                                        <div class="photographer-avatar-wrap">
+                                            <div class="photographer-avatar">
+                                                <div>
+                                                    <a href="<?= $shop_url ?>" class="mdl-chip mdl-chip--contact">
+                                                        <span class="mdl-chip__contact background-cover" style="background-image: url('<?= $avatar ?>')"></span>
+                                                        <span class="mdl-chip__text"><?= $shoptitle ?></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a title="<?= $block->escapeHtml($_item->getName()) ?>" href="<?= $block->escapeUrl($_item->getProductUrl()) ?>" class="product-item-photo">
+                                            <img src="<?php echo $productImage; ?>"/>
+                                            <span class="photo-title"><?= $block->escapeHtml($_item->getName()) ?></span>
+                                            <div class="klloom_triangle"></div>
+                                        </a>
+                                        <div class="product-item-details">
+                                            <?= $block->getProductCommentLikeHtml($_item) ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <?php if ($sellerId === $_helperW->getCustomerId()) { ?>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "Klloom_ProductTags/js/update_cross_tags": {
+                    "ajaxUrl"   : "<?= $this->getAjaxUrl(); ?>",
+                    "loader"    : {},
+                    "redirect" : "<?= $login_url ?>"
+                }
+            }
+        }
+        </script>
+    <?php } ?>
+
+<?php } ?>

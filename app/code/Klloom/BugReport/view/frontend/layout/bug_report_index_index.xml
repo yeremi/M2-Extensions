@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Bug Report</title>
+        <meta name="description" content="Klloom doesn’t intend to be perfect. Admiting our weaknesses and faults make us stronger, as we evolve together with a community of users who participate actively as real curators of our service. Everyone is invited to be part of this movement, and we will stay always open to ideas that may improve our model. We are in Beta, and so we will always be." />
+    </head>
+    <body>
+        <referenceBlock name="page.main.title">
+            <block class="Klloom\Contact\Block\Link" name="report-issue">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Give Just a Feedback Instead</argument>
+                    <argument name="path" xsi:type="string">contact</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="page.wrapper">
+            <container name="bug-klloom-top" htmlTag="div" htmlClass="bug-klloom-top-wrap" before="main.content">
+                <block name="bug-klloom-top-banner" template="Klloom_BugReport::top.phtml"/>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Klloom\BugReport\Block\ContactForm" name="contactForm" template="Klloom_BugReport::form.phtml">
+                <container name="form.additional.info" label="Form Additional Info"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

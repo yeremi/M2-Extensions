@@ -1,0 +1,249 @@
+<div class="page-full-background how-it-works-01 bg-page-gray">
+    <div class="klloom-title-wrapper">
+        <div class="mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet mdl-cell--2-col-phone mdl-cell--middle">
+                <h1 class="page-title"><span>Klloom</span> > How It Works</h1>
+            </div>
+            <?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Klloom_Pages::html/menu-about.phtml")->toHtml(); ?>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-content-wrapper">
+    <div class="mdl-grid mdl-grid--no-spacing" style="margin-bottom: 52px; margin-top: 60px">
+        <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <p style="font-size: 26px;line-height: 30px;">Klloom is a user-driven stock image bank based on sharing economy where you can buy and sell photos while helping a humanitarian cause. License your photographs directly to brands, agencies and photo lovers. Buy real life shots straight from the authors and use them in your campaigns. All for reasonable prices and under a simple license policy. Make extra money doing what you love and support an alternative stock photo market.
+            </p>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--2-offset-desktop mdl-cell--1-offset-tablet mdl-typography--text-center mdl-cell--bottom">
+            <p>
+                <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/cause-and-affect-photo-heart.png'); ?>" />
+
+                <br />
+                <span style="color: #35a8e0">20%</span> of all our photo<br/>
+                licensing incomes<br/>
+                go to donation.<br/>
+                Read our <a href="/cause-and-effect" title="Cause & Effect">Cause & Effect</a><br/>
+                page to learn more.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-hr"></div>
+
+<style>
+    .your-class p {
+        color: #b8b8b8;
+        margin: 22px 0 12px 0;
+        padding-right: 35px;
+        font-size: 1.3rem;
+    }
+
+    .slick-slide div div img{
+        margin-left: 2px;
+    }
+
+    .slick-prev,
+    .slick-next {
+        display: block;
+        width: 70px;
+        height: 70px;
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+    }
+
+    .slick-prev {
+        left: -70px;
+    }
+
+    .slick-next {
+        right: -70px;
+    }
+
+    .slick-prev:before {
+        content: url("<?php echo $this->getViewFileUrl('Klloom_Pages::images/arrow-prev.svg'); ?>");
+        display: inline-block;
+    }
+
+    .slick-next:before {
+        content: url("<?php echo $this->getViewFileUrl('Klloom_Pages::images/arrow-next.svg'); ?>");
+        display: inline-block;
+    }
+
+    .slick-dots li button {
+        box-shadow: none;
+        border-radius: 0;
+    }
+    @media (max-width: 839px) and (min-width: 480px){
+        .mdl-typography--text-right p {
+            text-align: left;
+        }
+        .your-class p {
+            padding-right: 15px;
+        }
+    }
+    @media (max-width: 479px){
+        .mdl-typography--text-right p {
+            text-align: left;
+        }
+        .your-class p {
+            padding-right: 15px;
+        }
+    }
+</style>
+<div class="klloom-content-wrapper" style="margin-bottom: 70px; padding-top: 20px">
+    <div class="mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-cell mdl-cell--6-col">
+            <h2 style="color: #35a8e0">Who can join Klloom? And Why?</h2> <br/>
+        </div>
+    </div>
+    <div class="join-klloom" style="position: relative">
+        <div>
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/icons/page-icon-photographers.svg'); ?>"/>
+            <h3>Photographers</h3>
+            <p>Sell your photos directly to brands, agencies and photo lovers <span class="color-text-light-blue">•</span> Make your brand-related shots available to local and big companies <span class="color-text-light-blue">•</span> Aim for media companies by uploading news-related and editorial photos <span class="color-text-light-blue">•</span> Support a good cause while making extra money doing what you love.</p>
+        </div>
+        <div>
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/icons/page-icon-iphoneographers.svg'); ?>"/>
+            <h3>Iphoneographers</h3>
+            <p>Sell your stored mobile phone pictures directly to brands and agencies <span class="color-text-light-blue">•</span> Transform your archived photos into earnings <span class="color-text-light-blue">•</span> Support a good cause while helping to change the image bank market’s status quo.</p>
+        </div>
+        <div>
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/icons/page-icon-brands.svg'); ?>"/>
+            <h3>Brands</h3>
+            <p>Let your own customers shot the images for your future campaign <span class="color-text-light-blue">•</span> Buy real life photographs directly from the authors <span class="color-text-light-blue">•</span> Find brand-related photos for your social media ads <span class="color-text-light-blue">•</span> Support a good cause while helping to build a great community.</p>
+        </div>
+        <div>
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/icons/page-icon-celebrities.svg'); ?>"/>
+            <h3>Celebrities</h3>
+            <p>Sell your pictures to media companies and help a humanitarian cause <span class="color-text-light-blue">•</span> Be your own paparazzo and sell your editorial photos to fans and magazines <span class="color-text-light-blue">•</span> Support a good cause while helping to build a trustworthy, user-driven image bank.</p>
+        </div>
+        <div>
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/icons/page-icon-agencies.svg'); ?>"/>
+            <h3>Agencies</h3>
+            <p>Buy brand-related photos for your social media campaigns <span class="color-text-light-blue">•</span> Get access to an alive and always growing image bank <span class="color-text-light-blue">•</span> Support a good cause while helping an alternative stock photo market.</p>
+        </div>
+        <div>
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/icons/page-icon-media-companies.svg'); ?>"/>
+            <h3>Media Companies</h3>
+            <p>Buy photos for editorial use under a simple pricing <span class="color-text-light-blue">•</span> Find fresh, real life shots to illustrate articles and editorials <span class="color-text-light-blue">•</span> Support a good cause while helping to create an unconventional image bank.</p>
+        </div>
+        <div>
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/icons/page-icon-collectors.svg'); ?>"/>
+            <h3>Collectors</h3>
+            <p>Discover new talents and buy photos directly from them <span class="color-text-light-blue">•</span> Find fresh, real life shots to your collections <span class="color-text-light-blue">•</span> Support a good cause while helping to boost a collaborative image bank.</p>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-hr"></div>
+
+<div class="klloom-content-wrapper">
+    <div class="mdl-grid mdl-grid--no-spacing" style="height: 350px">
+        <div class="mdl-cell mdl-cell--8-col mdl-cell--middle">
+            <h2 style="font-size: 52px;line-height: 52px;color: #b8b8b8; margin-top: 0;">How Can I Start Licensing?</h2>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--middle mdl-typography--text-right">
+            Open the <a href="<?= $block->escapeUrl($this->getUrl('marketplace/product/create')) ?>">Upload Page</a>, or <a href="<?= $block->escapeUrl($this->getUrl('customer/account/create')) ?>"><?= $block->escapeHtml(__('Sign Up')) ?></a> for an account.
+        </div>
+    </div>
+</div>
+
+<div class="klloom-hr"></div>
+
+<div class="klloom-content-wrapper">
+    <div class="mdl-grid mdl-grid--no-spacing" style="padding: 80px 0;">
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <span class="color-text-light-blue" style="font-size: 140px; line-height: 128px">1</span> <h3 style="color: #b8b8b8;display: inline-block;font-size: 34px;line-height: 34px;">choose<br />a great photo</h3>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/how-it-works-01.svg'); ?>" />
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-typography--text-right">
+            <p style="font-size: 25px;color: #b8b8b8;line-height: 28px;">Doesn't matter you are a pro or an iphoneographer, everyone has at least one great shot kept in some hard disk. What about turning that photo into money for you and a great cause? Go for it.</p>
+        </div>
+        <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <p style="font-size: 1.3rem; margin-top: 20px;">Use hashtags (#) to mention brands and companies that appear in your photos.</p>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-typography--text-right">
+            <p style="font-size: 1.3rem">Please make sure that the photo is not offensive, racist, discriminatory (in any way), pornographic or an inappropriate image, such as illustrations, painting, 3D render, ads, logos or vector design. Please read our <a href="/behavior-guidelines" title="<?= /* @escapeNotVerified */__('Behavior Guidelines') ?>">Behavior Guidelines</a> and our <a href="/contributor-agreement" title="<?= /* @escapeNotVerified */ __('Contributor Agreement') ?>">Contributor Agreement</a> to know more.</p>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-hr"></div>
+
+<div class="klloom-content-wrapper">
+    <div class="mdl-grid mdl-grid--no-spacing" style="padding: 80px 0;">
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <span class="color-text-light-blue" style="font-size: 140px">2</span> <h3 style="color: #b8b8b8;display: inline-block;font-size: 34px;line-height: 34px;">pick<br />a price</h3>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/how-it-works-02.svg'); ?>" />
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-typography--text-right">
+            <p style="font-size: 25px;color: #b8b8b8;line-height: 28px;">We are trying new ways of making the licensing process easier and affordable for a wider range od people. That's why we are starting with a very simple preset pricing to choose from. Feel free to send us your feedback about that.</p>
+        </div>
+        <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <p style="font-size: 1.3rem; margin-top: 20px;">Currently, all photos are licensed under our Klloom Standard License terms (royalty-free, non-exclusive).</p>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-hr"></div>
+
+<div class="klloom-content-wrapper">
+    <div class="mdl-grid mdl-grid--no-spacing" style="padding: 80px 0;">
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <span class="color-text-light-blue" style="font-size: 140px">3</span> <h3 style="color: #b8b8b8;display: inline-block;font-size: 34px;line-height: 34px;">share it<br />with people</h3>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/how-it-works-03.svg'); ?>" />
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-typography--text-right">
+            <p style="font-size: 25px;color: #b8b8b8;line-height: 28px;">
+                Besides sharing your photos with friends, we encourage all photographers to start a close relationship with the brands that take part in their daily life and to sell brand-related images directly to those companies.
+            </p>
+        </div>
+        <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <p style="font-size: 1.3rem; margin-top: 20px;">Use hashtags (#) to mention brands and companies that appear in your photos.</p>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-hr"></div>
+
+<div class="klloom-content-wrapper">
+    <div class="mdl-grid mdl-grid--no-spacing" style="min-height: 350px;padding-top: 55px;padding-bottom: 55px;">
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <h2 style="font-size: 72px;line-height: 65px;color: #b8b8b8">How<br />much<br />will<br />I gain?</h2>
+        </div>
+
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/cause-and-effect-how-much-will-i-gain.png'); ?>" />
+        </div>
+
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-typography--text-right">
+            <p style="font-size: 25px;color: #b8b8b8;line-height: 28px;">Initially, licensing your photo at Klloom will earn you 40% royalties out of the gross profit on every license sold. We assure you this rate won't be reduced and we do consider raising that in the future.</p>
+            <p style="font-size: 1.3rem">We've been working hard to build a trustworthy, collaborative image bank, and that includes thinking carefully about that would be the more reasonable profit distribution and royalty rate practice, considering that the donation is an essential part of our model. Please send us your thoughts about that.</p>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-hr"></div>
+
+<div class="mdl-grid mdl-grid--no-spacing" style="height: 480px; padding-top: 50px; padding-bottom: 60px">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--middle mdl-typography--text-center">
+        <img style="display: inline-block" src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/backgrounds/history-of-photography-camera-01.png'); ?>"/>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Klloom_Pages/js/pages":{}
+    }
+}
+</script>

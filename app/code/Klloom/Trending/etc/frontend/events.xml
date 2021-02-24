@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <event name="catalog_controller_product_view">
+        <observer name="klloom_action_view" instance="Klloom\Trending\Observer\Product\View"/>
+    </event>
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="klloom_action_buy" instance="Klloom\Trending\Observer\Product\Purchase"/>
+    </event>
+    <event name="sendfriend_product">
+        <observer name="klloom_action_friend" instance="Klloom\Trending\Observer\Product\Friend"/>
+    </event>
+    <!--
+    Comment
+    Like
+    Share
+    Report
+    -->
+    <event name="klloom_trending_events">
+        <observer name="klloom_action_data" instance="Klloom\Trending\Observer\Product\Custom"/>
+    </event>
+
+</config>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="klloom_abuse_events">
+        <observer name="klloom_action_notify_abuse" instance="Klloom\AbuseReport\Observer\Notify"/>
+    </event>
+</config>

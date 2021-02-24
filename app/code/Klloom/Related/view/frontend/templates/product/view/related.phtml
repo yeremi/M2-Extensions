@@ -1,0 +1,173 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: yeremiloli
+ * Date: 19/09/18
+ * Time: 19:56
+ */
+
+$product_id = $block->getCurrentProduct()->getId();
+
+$_helperW     = $this->helper('Webkul\Marketplace\Helper\Data');
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+$image        = 'new_products_content_widget_grid';
+
+$sellerId           = '';
+$marketplaceProduct = $_helperW->getSellerProductDataByProductId($product_id);
+foreach ($marketplaceProduct as $value) {
+    $sellerId = $value['seller_id'];
+}
+
+$rowsocial = $_helperW->getSellerDataBySellerId($sellerId);
+$shoptitle = '';
+$avatar    = $this->getViewFileUrl('images/avatar/no-image.svg');
+foreach ($rowsocial as $value) {
+    $shoptitle = $value['shop_title'];
+    $shopUrl   = $value['shop_url'];
+    if (!$shoptitle) {
+        $shoptitle = $value->getShopUrl();
+    }
+    if ($value->getLogoPic()) {
+        $logoPic = str_replace('.', '-small.', $value->getLogoPic());
+        $avatar = $_helperW->getMediaUrl() . 'avatar/thumb' . $logoPic;
+    }
+}
+$shoptitle = $block->escapeHtml($shoptitle);
+$items     = $this->getProductsByCustomer($sellerId);
+$shop_url  = $_helperW->getRewriteUrl('marketplace/seller/profile/shop/' . $shopUrl);
+?>
+
+<?php
+$nin = [$product_id];
+if ($items) { ?>
+<div class="block widget block-products-list grid" style="width: 100%;">
+
+    <div class="klloom-hr"></div>
+
+    <div class="products-grid grid" style="max-width: 1256px; padding: 0 20px; margin: auto">
+
+        <h3 style="margin: 40px 0 20px 8px;display: block;"><span style="color:#b1b1b1">Other photos by</span> <?= $shoptitle ?>:</h3>
+
+        <div class="mdl-grid mdl-grid--no-spacing">
+            <?php $i=1; foreach ($items as $_item):
+                $nin[] = $_item->getId();
+                $productImage = $_imagehelper->init($_item, $image)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300, 300)->getUrl();
+                $columnMP = ($i % 4 == 0) ? 'lastcolumn' : '';
+                ?>
+                <div id="<?= $_item->getId(); ?>" class="klloom-grid-item mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone">
+                    <div class="product-item-info">
+                        <div class="photographer-avatar-wrap">
+                            <div class="photographer-avatar">
+                                <div>
+                                    <a href="<?= $shop_url ?>" class="mdl-chip mdl-chip--contact">
+                                            <span class="mdl-chip__contact background-cover" style="background-image: url('<?= $avatar ?>')"></span>
+                                            <span class="mdl-chip__text"><?= $shoptitle ?></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a title="<?= $block->escapeHtml($_item->getName()) ?>"
+                           href="<?= $block->escapeUrl($_item->getProductUrl()) ?>"
+                           class="product-item-photo">
+                            <img src="<?php echo $productImage; ?>"/>
+                            <span class="photo-title"><?= $block->escapeHtml($_item->getName()) ?></span>
+                        </a>
+                        <div class="product-item-details">
+                            <?= $block->getProductCommentLikeHtml($_item) ?>
+                        </div>
+                    </div>
+                </div>
+            <?php $i++; endforeach ?>
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+
+<?php
+$itemsByCategory = $block->getProductsCollectionByCategoryId($nin);
+if ($itemsByCategory->count() > 0) { ?>
+
+    <div class="block widget block-products-list grid" style="width: 100%;">
+
+        <div class="klloom-hr"></div>
+
+        <div class="products-grid grid" style="max-width: 1256px; padding: 0 20px; margin: auto">
+
+            <h3 style="margin: 40px 0 20px 8px;display: block;">Related images:</h3>
+
+            <div class="mdl-grid mdl-grid--no-spacing klloom-grid">
+                <?php $i=1; foreach ($itemsByCategory as $_item):
+
+                    $productImage = $_imagehelper->init($_item, $image)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300)->getUrl();
+
+                    $seller_id = false;
+                    $shoptitle = '';
+                    $shopUrl   = '';
+                    $avatar    = $this->getViewFileUrl('images/avatar/no-image.svg');
+
+                    $marketplaceProduct = $_helperW->getSellerProductDataByProductId((int)$_item->getId());
+                    foreach ($marketplaceProduct as $value) {
+                        $seller_id = $value['seller_id'];
+                    }
+                    if ($seller_id) {
+                        $rowsocial = $_helperW->getSellerDataBySellerId($seller_id);
+                        foreach ($rowsocial as $seller) {
+                            if (!empty($seller['shop_title'])) {
+                                $shoptitle = '@' . $seller['shop_title'];
+                                $shopUrl   = $seller['shop_url'];
+                            }
+                            if ($seller->getLogoPic()) {
+                                $logoPic = str_replace('.', '-small.', $seller->getLogoPic());
+                                $avatar = $_helperW->getMediaUrl() . 'avatar/thumb' . $logoPic;
+                            }
+                        }
+                    }
+                    $columnMP = ($i % 4 == 0) ? 'lastcolumn' : '';
+                    $shop_url = $_helperW->getRewriteUrl('marketplace/seller/profile/shop/' . $shopUrl);
+                    ?>
+                    <div id="<?= $_item->getId(); ?>" class="klloom-grid-item mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone <?= $columnMP ?>">
+                        <div class="product-item-info">
+                            <div class="photographer-avatar-wrap">
+                                <div class="photographer-avatar">
+                                    <div>
+                                        <a href="<?= $shop_url ?>" class="mdl-chip mdl-chip--contact">
+                                            <span class="mdl-chip__contact background-cover" style="background-image: url('<?= $avatar ?>')"></span>
+                                            <span class="mdl-chip__text"><?= $shoptitle ?></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a title="<?= $block->escapeHtml($_item->getName()) ?>"
+                               href="<?= $block->escapeUrl($_item->getProductUrl()) ?>"
+                               class="product-item-photo">
+                                <img src="<?php echo $productImage; ?>"/>
+                                <span class="photo-title"><?= $block->escapeHtml($_item->getName()) ?></span>
+                            </a>
+                            <div class="product-item-details">
+                                <?= $block->getProductCommentLikeHtml($_item) ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php $i++; endforeach ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<div class="klloom-hr"></div>
+
+<?php echo $this->getLayout()->createBlock("Klloom\ProductCategories\Block\Category\Toolbar")->setTemplate("Klloom_ProductCategories::category/toolbar.phtml")->toHtml(); ?>
+
+<style>
+    .klloom-grid-item {
+        float: left;
+        padding: 0 8px 16px 8px;
+    }
+
+    .klloom-grid-item.lastcolumn {
+        padding-right: inherit;
+    }
+</style>

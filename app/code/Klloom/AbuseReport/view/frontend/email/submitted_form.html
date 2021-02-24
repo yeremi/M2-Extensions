@@ -1,0 +1,28 @@
+<!--@subject {{trans "Klloom Image Report"}} @-->
+{{template config_path="design/email/header_template"}}
+<p>Moderator, check the following abuse report</p>
+<table class="message-details">
+    <tr>
+        <td style="width: 150px;"><b>{{trans "Reported as"}}</b></td>
+        <td>{{var report_type}}</td>
+    </tr>
+    <tr>
+        <td style="width: 150px;"><b>{{trans "Photo Name"}}</b></td>
+        <td>{{var product_name}}</td>
+    </tr>
+    <tr>
+        <td style="width: 150px;"><b>{{trans "Photo Url"}}</b></td>
+        <td>{{var product_url}}</td>
+    </tr>
+    <tr>
+        <td style="width: 150px;"><b>{{trans "Product Photo"}}</b></td>
+        <td>{{var product_photo}}</td>
+    </tr>
+</table>
+<p>
+    <a href="{{var product_url}}" title="{{var product_name}}">
+        <img src="{{var product_photo}}" height="442" width="342"/>
+    </a>
+</p>
+<p style="font-size: 11px; margin-top: 20px; border-top: solid 1px #ccc">This is an automatically generated email – please do not reply to it</p>
+{{template config_path="design/email/footer_template"}}

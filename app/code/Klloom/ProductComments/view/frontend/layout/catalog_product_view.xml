@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Klloom_ProductComments::css/product_comments.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <referenceContainer name="product.info.media">
+                <container name="klloom-product-comments" htmlTag="div" htmlClass="klloom-product-comments" after="product.info.description">
+                    <block class="Klloom\ProductComments\Block\Comments" name="klloom.product.comments" template="Klloom_ProductComments::product/view/knockout.phtml" cacheable="false"/>
+                </container>
+            </referenceContainer>
+        </referenceContainer>
+    </body>
+</page>

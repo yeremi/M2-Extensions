@@ -1,0 +1,24 @@
+@klloomproductcomments-icons-admin__font-name-path: '@{baseDir}Klloom_ProductComments/fonts/klloom-icons';
+@klloomproductcomments-icons-admin__font-name: 'klloom-icons';
+
+.lib-font-face(
+  @family-name:@klloomproductcomments-icons-admin__font-name,
+  @font-path:  @klloomproductcomments-icons-admin__font-name-path,
+  @font-weight: normal,
+  @font-style: normal
+);
+
+.admin__menu .item-comments.parent.level-0 > a:before {
+  font-family: @klloomproductcomments-icons-admin__font-name;
+  content: "\e90a";
+}
+.klloom-product-comments {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-color: #e3e3e3;
+  border-style: solid;
+  border-width: 0 0 1px;
+  margin-bottom: 3rem;
+  padding: 0 0 3.3rem 0;
+}

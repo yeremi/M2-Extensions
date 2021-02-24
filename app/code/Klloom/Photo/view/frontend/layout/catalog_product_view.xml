@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <block class="Klloom\Photo\Block\Photo" name="klloom_photo" as="klloom_photo_camera_attributes" template="Klloom_Photo::photo.phtml" after="-"/>
+            <block class="Klloom\Photo\Block\Photo" name="klloom_photo_colors" as="klloom_photo_colors" template="Klloom_Photo::colors.phtml" after="-"/>
+        </referenceContainer>
+    </body>
+</page>

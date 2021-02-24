@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Klloom_Financial::reports" title="Financial" module="Klloom_Financial" sortOrder="51" resource="Klloom_Financial::report"/>
+    </menu>
+</config>

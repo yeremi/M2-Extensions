@@ -1,0 +1,91 @@
+<?php
+
+$customerslike = $block->getCustomerlikeFromProductId();
+$helper = $this->helper('Webkul\Marketplace\Helper\Data');
+?>
+<?php
+/**
+ * TODO IMPORTANT
+ * This icons will be displayed in all pages
+ * You can found all file to be display this icons searching for files withe the following text: "TODO AMIT Here will be showed ths icons"
+ *
+ *
+ * TODO AMIT LIKES
+ * When user is logged in:
+ * 1. When click on heart icon change the classname icon-like-klloom to icon-like-active-klloom
+ *      - icon-like-klloom is for non likes
+ *      - icon-like-active-klloom is for liked
+ * 2. Save/Update on database (using ajax behavior)
+ *
+ * When user is NOT logged in:
+ * - Whe user click open a popup just with a link white a message.
+ *      You can see this behavior on app/design/frontend/Klloom/klloom/Magento_Theme/templates/html/copyright.phtml
+ * - After mouseout from heart icon, back to like information.
+ */
+
+/**
+ * TODO AMIT
+ * Show total number of likes
+ */
+
+?>
+<?php if ($customerslike->count()<0) { ?>
+
+    <div class="webui-popover-content">
+        <?= /* @escapeNotVerified */
+        __('0 Likes') ?>
+    </div>
+
+<?php } else { ?>
+
+    <div class="klloom-popup-wrapper webui-popover-content">
+        <div class="kp-inner">
+
+            <div class="kp-header"><?= /* @escapeNotVerified */
+                $customerslike->getSize() . __(' Likes') ?>
+                <a style="float: right" href="<?php //TODO AMIT: Link to product page ?>"><?= /* @escapeNotVerified */
+                    __('View All') ?></a>
+
+            </div>
+
+            <div class="klloom-hr" style="margin: 12px 0"></div>
+
+            <div class="klloom-mini-likes mdl-list">
+
+                <?php
+                /**
+                 * TODO AMIT:
+                 * Show the 3 last photographers who likes this photo
+                 * Show the photo profile of each photographer
+                 * Show how many photos he has and add the url for his public profile
+                 *
+                 */
+                foreach ($customerslike as $customer) {
+
+                    $sellerdata= $block->getSellerShopDetails($customer->getData('entity_id'));
+                    $sellershopurl = '';
+                    if($sellershopurl==false){
+                        $sellershopurl =  '#';
+                    }else{
+                        $sellershopurl = $helper->getRewriteUrl($sellerdata->getData('shop_url'));
+                    }
+                    ?>
+
+                    <div class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+
+                                <i class="material-icons mdl-list__item-avatar"
+                                   style="background-image: url('http://urbano.topfas.com.br/avatar/100000269922613.jpg'); margin-bottom:0"></i>
+                                <span>!!!<?php echo $customer->getData('firstname').$customer->getData('lastname');?></span>
+                            </span>
+                        <a class="mdl-list__item-secondary-action"
+                           href="<?php echo $sellershopurl;?>">
+                            <?= $block->getSellerProductCount($customer->getData('entity_id')); //TODO AMIT: update with the correct data  ?>
+                            photos
+                        </a>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>

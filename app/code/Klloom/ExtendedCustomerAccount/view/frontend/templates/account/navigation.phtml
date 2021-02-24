@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Framework\View\Element\Html\Links */
+?>
+<style type="text/css">
+    @media only screen and (max-width: 767px){
+        .block-collapsible-nav.stats-nav{
+            top: 61px;
+            z-index: 4;
+        }
+    }
+</style>
+<div class="block stats-nav block-collapsible-nav">
+    <div class="title block-collapsible-nav-title" data-mage-init='{"toggleAdvanced": {"toggleContainers": "#block-collapsible-nav-stats", "selectorsToggleClass": "active"}}'>
+        <strong><?= $block->escapeHtml(__('Photographer Stats')) ?></strong>
+    </div>
+    <div class="content block-collapsible-nav-content" id="block-collapsible-nav-stats">
+        <nav class="account-nav">
+            <ul id="klloom-nav-target" class="photograoher-nav nav items">
+                <?= $block->getChildHtml() ?>
+            </ul>
+        </nav>
+    </div>
+</div>
+<style>
+    ul.photograoher-nav li a {
+        color: #9a9a9a
+    }
+</style>

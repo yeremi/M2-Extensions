@@ -1,0 +1,76 @@
+<?php
+$licenseHelper = $this->helper('Klloom\License\Model\Helper\Data');
+$product_id   = $this->getRequest()->getParam('id');
+$licenseSelected = $block->getParentBlock()->getProduct($product_id)->getKlloomLicense();
+$licenses = $licenseHelper->getCatalogResourceEavAttribute('klloom_license');
+?>
+
+<fieldset class="fieldset" style="margin-top: 40px; display: none" id="klloom_license">
+
+    <div class="klloom-hr" style="margin-bottom: 29px;"></div>
+
+    <?php
+    echo '<pre>';
+    echo $licenseSelected;
+    echo '<br>';
+    foreach ($licenses as $license) {
+        echo $license->getValue();
+        echo ' - ';
+        echo $license->getLabel();
+        echo '<br>';
+    }
+    echo '</pre>';
+    ?>
+
+    <div class="field choice klloom_standard_license">
+
+        <div style="margin-bottom: 8px">
+            <span><?php /* @escapeNotVerified */ echo __('Choose a License') ?>:</span>
+            <div style="color: #c6c6c5;font-size: 1.1rem;margin-top: 5px;margin-bottom: 5px;">
+                License describes how people can use your photo, and how they cannot use.
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <?php
+                $description = array(
+                        1 => __('Image can be used for commercial<br>and editorial purposes.'),
+                        2 => __('Image can NOT be used for commercial purposes.')
+                );
+                if($licenses){
+                    foreach ($licenses as $license) {
+                        if(empty($license->getValue())) continue;
+                        ?>
+                        <td style="padding-left: 0">
+                            <span style="color: #c6c6c5"><?php /* @escapeNotVerified */ echo __('Klloom Standard License') ?> <?= $license->getValue() ?></span>
+                            <div style="color: #c6c6c5;font-size: 1.1rem;margin-bottom: 5px;">
+                                <?= /* @escapeNotVerified */  __('Unlimited, Perpetual, Non-exclusive, Singular-User') ?>
+                            </div>
+
+                            <label class="label" for="klloom_standard_license" style="padding: 4px 0;display: block;">
+                                <input type="radio" name="klloom_license" value="<?= $license->getValue() ?>" title="<?php /* @escapeNotVerified */ echo __('Klloom Commercial Use') ?>" class="required-entry" data-validate="{required:true}" <?= ($license->getValue() == $licenseSelected) ? 'checked': ''; ?>>
+                                <span><?= /* @escapeNotVerified */ __( $license->getLabel() ) ?></span>
+                            </label>
+
+                            <div style="color: #c6c6c5;font-size: 1.3rem;margin-top: 5px;margin-bottom: 5px;">
+                                <?= $description[$license->getValue()] ?>
+                            </div>
+                            <a href="#" class="show-pop-large" style="font-size: 1.2rem;">Learn more</a>
+                        </td>
+                <?php }
+                } ?>
+
+            </tr>
+        </table>
+
+    </div>
+</fieldset>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Klloom_License/js/klloom_license": {}
+    }
+}
+</script>

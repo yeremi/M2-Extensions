@@ -1,0 +1,55 @@
+<?php
+$info = $this->getPhotoInformation();
+?>
+<style>
+    .klloom-camera-container {
+        font-size: 1.2rem;
+        color: #b1b1b1;
+        /*border-top: solid 1px #fff;
+        border-bottom: solid 1px #cfcfcf;*/
+    }
+
+    .klloom-camera-container p {
+        margin-bottom: 0;
+    }
+
+    .klloom-camera-container p i {
+        color: #000000;
+        font-size: 1.6rem;
+    }
+
+    .webui-popover-content table td {
+        padding: 3px 0 !important;
+    }
+</style>
+<div class="klloom-camera-container">
+    <div class="mdl-grid mdl-grid--no-spacing" style="height:36px;min-height: 58px;">
+        <!--
+        <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-cell--middle">
+            <p><i class="icon-camera-especs-klloom"></i> <?= $this->getCameraInformation(); ?></p>
+        </div>
+        -->
+        <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--middle">
+            <p style="display: inline-block"><i class="icon-photo-dimensions-klloom"></i> <?= $info['pixels'] . ' pixels ' . $info['size'] . ' Aspect Ratio: ' . $info['aspect'] ?></p>
+            <a style="margin-left: 6px" href="javascript:;" class="klloom-tooltip" data-trigger="click" data-width="230">more</a>
+            <div class="webui-popover-content">
+                <span style="color: #000000;font-size: 1.4rem; padding: 6px 0 12px 0; display: inline-block;">
+                    <i class="fas fa-file"></i> Print Size (at <?= $info['dpi'] ?> dpi):
+                </span>
+                <div class="klloom-hr"></div>
+                <table style="margin-top: 7px">
+                    <tr>
+                        <td style="color:#35a8e0;">Inches:</td>
+                        <td class="mdl-typography--text-right"><?= $info['in'] ?> inch</td>
+                    </tr>
+                    <tr>
+                        <td style="color:#35a8e0;">Milimeters:</td>
+                        <td class="mdl-typography--text-right"><?= $info['mm'] ?> mm</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="klloom-hr"></div>

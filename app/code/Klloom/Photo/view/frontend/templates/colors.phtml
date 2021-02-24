@@ -1,0 +1,47 @@
+<?php
+$colors = $this->getPhotoColors();
+if ($colors) { ?>
+
+    <style>
+        /*.klloom-related-colors {
+            float: left;
+        }*/
+
+        .klloom-related-colors ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 20px;
+            display: inline-block;
+        }
+
+        .klloom-related-colors ul li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border-radius: 20px;
+            background: darkblue;
+        }
+
+        .klloom-related-colors span {
+            height: 22px;
+            line-height: 22px;
+            display: inline-block;
+            float: left;
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+    </style>
+    <div class="klloom-related-colors mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone mdl-cell--middle">
+        <span><?= _('Related Colors:') ?></span>
+        <ul>
+            <?php foreach ($colors as $color) { ?>
+                <li style="background-color: <?php echo $color ?>"></li>
+            <?php } ?>
+        </ul>
+    </div>
+
+<?php } ?>

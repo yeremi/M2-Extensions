@@ -1,0 +1,11 @@
+<?php
+$stringHelper = $this->helper('Klloom\Pages\Helper\StringHelper');
+?>
+<div class="related-page-links mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone mdl-cell--middle mdl-typography--text-right">
+    <span style="color: #fff; margin-bottom: 12px; display: block"><?= /* @escapeNotVerified */ __('Read also:') ?></span>
+    <div><a href="/about" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/about'); ?> ><?= /* @escapeNotVerified */ __('About') ?></a></div>
+    <div><a href="/cause-and-effect" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/cause-and-effect'); ?> ><?= /* @escapeNotVerified */ __('Cause & Effect') ?></a></div>
+    <div><a href="/how-it-works" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/how-it-works'); ?> ><?= /* @escapeNotVerified */ __('How It Works') ?></a></div>
+    <div><a href="/contact" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/contact'); ?> ><?= /* @escapeNotVerified */ __('Contact') ?></a></div>
+    <div><a href="/faq" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/faq'); ?> ><?= /* @escapeNotVerified */ __('FAQ') ?></a></div>
+</div>

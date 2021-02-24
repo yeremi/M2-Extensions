@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="abuse_email_abuse_email_template" label="Abuse Report Form" file="submitted_form.html" type="html" module="Klloom_AbuseReport" area="frontend"/>
+    <template id="abuse_email_notify_email_template" label="Notify Photographer by Abuse Report" file="notify_photographer.html" type="html" module="Klloom_AbuseReport" area="frontend"/>
+</config>

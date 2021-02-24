@@ -1,0 +1,323 @@
+<?php
+$helper = $this->helper('\Magento\Search\Helper\Data');
+$helper = $this->helper('Webkul\Marketplace\Helper\Data');
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+$image = 'new_products_content_widget_grid';
+$productCollection = $block->getProductCollection();
+
+$percentage = array(
+    'photographer' => $block->getPercentagePhotographer(),
+    'donation' => $block->getPercentageDonation(),
+    'taxes' => 20,
+    'klloom' => 100 - ($block->getPercentagePhotographer() + $block->getPercentageDonation() + 20)
+);
+
+$seller_id = '';
+$banner_image_src = 'https://cdn.klloom.com/pub/media/catalog/product/cache/1c7a0a1ab4be52e059c935c6253528ef/0/j/0j8a8525.jpg';
+$shoptitle = '';
+$shop_url = '';
+
+if (count($productCollection) > 0) {
+    foreach ($productCollection as $product) {
+        $banner_image_src = $_imagehelper->init($product, $image)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(1440, 520)->getUrl();
+
+        $marketplaceProduct = $helper->getSellerProductDataByProductId($product->getID());
+        foreach ($marketplaceProduct as $value) {
+            $seller_id = $value['seller_id'];
+        }
+    }
+}
+
+if ($seller_id != "") {
+    $rowsocial = $helper->getSellerDataBySellerId($seller_id);
+    foreach ($rowsocial as $value) {
+        $shoptitle = $value['shop_title'];
+        $shop_url = $value['shop_url'];
+        if (!$shoptitle) {
+            $shoptitle = $value->getShopUrl();
+        }
+    }
+    $shoptitle = $block->escapeHtml($shoptitle);
+}
+?>
+
+<style>
+
+    .maincontent {
+
+    }
+
+    .page-header {
+        border-bottom: none !important;
+        margin-bottom: 0 !important;
+    }
+
+    /*.klloom-banner {
+        border-bottom: solid 1px #9E9E9E;
+    }*/
+
+    @media (min-width: 840px) {
+        .klloom-banner {
+            /*padding-bottom: 42px;*/
+        }
+    }
+
+    .klloom-banner .klloom-banner-background {
+        background: url("<?= /* @escapeNotVerified */ $banner_image_src ?>") no-repeat center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .klloom-banner .banner-wrapper {
+        max-width: 1280px;
+        margin: auto;
+    }
+
+    .klloom-banner .banner-content {
+        padding: 30px 20px;
+        margin: auto;
+        height: 480px;
+    }
+
+    input[type="text"] {
+        height: 38px;
+        outline: none;
+        border: none;
+        /*box-shadow: none;*/
+    }
+
+    .klloom-banner-opacity {
+
+    }
+
+    /**
+    =================
+     MONEY DIVISION
+    =================
+    **/
+    #where-does-the-money-go h3 {
+        color: #fff;
+    }
+
+    #where-does-the-money-go .mdl-typography--text-right p {
+        line-height: 48px;
+        height: 47px;
+        padding-right: 8px;
+        margin-bottom: 3px;
+    }
+
+    #where-does-the-money-go .mdl-typography--text-left p {
+        margin-bottom: 3px;
+    }
+
+    #where-does-the-money-go .mdl-typography--text-left p span {
+        border: solid 2px #35a8e0;
+        border-radius: 50%;
+        display: inline-block;
+        padding: 0;
+        font-size: 21px;
+        width: 43px;
+        height: 43px;
+        text-align: center;
+        line-height: 45px;
+        margin-right: 4px;
+    }
+</style>
+
+    <div class="klloom-banner-background">
+        <div class="klloom-banner-opacity">
+
+            <div class="banner-wrapper">
+                <div class="banner-content">
+                    <div class="mdl-grid mdl-grid--no-spacing">
+
+                        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--hide-phone">
+                            <div class="random-wrapper">
+                                <div class="random-wrapper-header">
+                                    <a href="javascript:;" id="RandomTab-01" class="current-active"><?= /* @escapeNotVerified */__('photographers') ?></a>
+                                    <a href="javascript:;" id="RandomTab-02"><?= /* @escapeNotVerified */ __('brands') ?></a>
+                                    <a href="javascript:;" id="RandomTab-03"><?= /* @escapeNotVerified */__('celebrities') ?></a>
+                                    <a href="javascript:;" id="RandomTab-04"><?= /* @escapeNotVerified */__('agencies') ?></a>
+                                    <a href="javascript:;" id="RandomTab-05"><?= /* @escapeNotVerified */__('media companies') ?></a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                        /**
+                         * LEFT SIDE
+                         */
+                        ?>
+                        <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--5-col-tablet mdl-cell--hide-phone">
+
+                            <?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Magento_Cms::banner/1.0.0/random.phtml")->toHtml(); ?>
+
+                            <a href="<?php echo $helper->getRewriteUrl('how-it-works'); ?>" class="klloom-medium-button" title="<?= /* @escapeNotVerified */__('Learn More') ?>" type="submit" style="text-transform: lowercase"><?= /* @escapeNotVerified */__('Learn More') ?></a>
+
+                            <div class="mini-banner-msf mdl-cell--hide-tablet">
+                                <p>
+                                    <span class="color-text-light-blue" style="display: block">give<br/>your photo<br/>a cause</span><?= $percentage['donation'] ?>
+                                    % of our<br/>gross earnings<br/>goes to
+                                </p>
+                                <img title="Pro Natura" src="<?php echo $block->escapeUrl($block->getViewFileUrl('images/logos/logo-pro-natura-w.png')); ?>" width="90"/>
+                                <img title="Red Cross" src="<?php echo $block->escapeUrl($block->getViewFileUrl('images/logos/logo-red-cross.png')); ?>" style="height: 42px;margin-bottom: 11px;"/>
+                                <br/>
+                                <a href="<?php echo $helper->getRewriteUrl('cause-and-effect'); ?>" title="Learn More"><?= /* @escapeNotVerified */__('Learn More') ?></a>
+                            </div>
+
+                        </div>
+
+                        <?php
+                        /**
+                         * CENTER SIDE
+                         */
+                        ?>
+                        <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--middle">
+                            <?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Magento_Cms::banner/1.0.0/search.phtml")->toHtml(); ?>
+                        </div>
+
+                        <?php
+                        /**
+                         * RIGHT SIDE
+                         */
+                        ?>
+                        <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone mdl-color-text--white">
+                            <?php //echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Magento_Cms::banner/1.0.0/money-division.phtml")->toHtml(); ?>
+                            <div id="where-does-the-money-go" class="mdl-grid mdl-grid--no-spacing">
+                                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-offset-desktop">
+                                    <h2>Where<br/>
+                                        does<br/>
+                                        the money<br/>
+                                        go?
+                                    </h2>
+                                </div>
+                                <div class="mdl-cell mdl-cell--6-col-desktop mdl-typography--text-right">
+                                    <p><?= /* @escapeNotVerified */__('Photographer') ?></p>
+                                    <p><?= /* @escapeNotVerified */__('Donation') ?></p>
+                                    <p><?= /* @escapeNotVerified */__('Klloom') ?></p>
+                                    <p><?= /* @escapeNotVerified */__('Taxes and Fees') ?></p>
+                                </div>
+                                <div class="mdl-cell mdl-cell--6-col-desktop mdl-typography--text-left">
+                                    <p><span><?= $percentage['photographer'] ?></span>%</p>
+                                    <p><span><?= $percentage['donation'] ?></span>%</p>
+                                    <p><span><?= $percentage['klloom'] ?></span>%</p>
+                                    <p><span><?= $percentage['taxes'] ?></span>%
+                                        <a class="see-why" href="<?= $block->escapeUrl($block->getUrl('about')); ?>" style="margin-left: 8px; font-size: 1.2rem">see why</a>
+                                    </p>
+
+                                    <div id="see-why" style="display:none;">
+                                        <p>It’s hard, but it’s necessary and we have to be honest. Dealing with money
+                                            involves many responsibilities, and we aim for transparency and reliability.
+                                            Most Image Banks don’t make it clear for users how much of the photographer
+                                            royalties is deducted to pay taxes and fees, as they usually show
+                                            percentages
+                                            that are related to the net profit instead of the gross sales. The 40% of
+                                            royalties given to photographers actually mean 50% of the net profit.
+                                            However,
+                                            we prefer not to hide real numbers under a more appealing percentage. It’s
+                                            our
+                                            way to do things, it will always be.
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="mdl-cell mdl-cell--12-col-desktop mdl-typography--text-right">
+                                <span style="font-size: 11px;letter-spacing: 0.05rem;margin-top: 80px;display: inline-block;">
+                                    Photo by: <a href="<?php echo $helper->getRewriteUrl('marketplace/seller/profile/shop/' . $shop_url); ?>" title="<?= $shoptitle; ?>"><?php echo $shoptitle; ?></a>
+                                </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mdl-grid mdl-grid--no-spacing mdl-cell--hide-desktop mdl-cell--hide-tablet"
+                         style="margin-top: 70px">
+                        <div class="mdl-cell mdl-cell--3-col-phone mdl-cell--bottom">
+                            <p style="font-size: 1.6rem; color: #fff">
+                                <span style="color: #35a8e0">give your<br/>photo a cause.</span><br/>
+                                <?= $percentage['donation'] ?>% of our<br/>gross earnings<br/>goes to:<br/>
+                            </p>
+                            <img title="Pro Natura" src="<?php echo $block->escapeUrl($block->getViewFileUrl('images/logos/logo-pro-natura-w.png')); ?>" width="80"/>
+                            <img title="Red Cross" src="<?php echo $block->escapeUrl($block->getViewFileUrl('images/logos/logo-red-cross.png')); ?>" style="width: 120px;margin-left: 12px;margin-bottom: 12px;"/>
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--bottom mdl-typography--text-right mdl-typography--text-uppercase">
+                            <a style="color: #fff; text-decoration: underline; font-size: 11px" href="<?php echo $helper->getRewriteUrl('cause-and-effect'); ?>" title="Learn More"><?= /* @escapeNotVerified */__('Learn More') ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<style>
+    .m-circle {
+        border: solid 2px #35a8e0;
+        height: 55px;
+        width: 55px;
+        font-size: 3rem;
+        text-align: center;
+        border-radius: 50%;
+        padding: 0;
+        line-height: 55px;
+        position: relative;
+        margin: auto;
+        margin-bottom: 8px;
+    }
+
+    .m-circle:after {
+        content: "%";
+        position: absolute;
+        background: #f7f7f7;
+        height: 20px;
+        line-height: 20px;
+        font-size: 20px;
+        right: -10px;
+        top: calc(50% - 15px);
+        padding: 4px 0;
+    }
+</style>
+<div class="mdl-grid mdl-cell--hide-desktop mdl-cell--hide-tablet">
+
+    <div class="mdl-cell mdl-cell--2-col-phone mdl-cell--bottom">
+        <p style="color: #c6c6c5; font-size: 2rem;">
+            <span style="color: #000;font-size: 1.6rem;margin-bottom: 8px;display: block;">photographer</span>
+            Sell your photos directly to companies, agencies and photo lovers
+        </p>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col-phone mdl-cell--bottom mdl-typography--text-right">
+        <i class="icon-camera-klloom" style="font-size: 4rem;color: #5e5e5d;margin-bottom: 99px;display: block;"></i>
+        <a href="<?php echo $helper->getRewriteUrl('how-it-works'); ?>" class="mdl-button--primary klloom-medium-button" title="<?= /* @escapeNotVerified */__('How it works') ?>" type="submit" style="text-transform: lowercase; color: #fff;display: inline-block;"><?= /* @escapeNotVerified */__('How it works') ?></a>
+    </div>
+</div>
+
+<div class="mdl-grid mdl-cell--hide-desktop mdl-cell--hide-tablet">
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--top mdl-typography--text-center">
+        <div class="m-circle">40</div>
+        <p style="font-size: 1rem;">Photographer</p>
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--top mdl-typography--text-center">
+        <div class="m-circle">20</div>
+        <p style="font-size: 1rem;">Donation</p>
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--top mdl-typography--text-center">
+        <div class="m-circle">20</div>
+        <p style="font-size: 1rem;">Klloom</p>
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--top mdl-typography--text-center">
+        <div class="m-circle">20</div>
+        <p style="font-size: 1rem;">Taxes&Fees</p>
+    </div>
+</div>
+
+<script type='text/javascript'>
+    /*require(['js/lity/lity.min', 'jquery', 'mage/cookies'],
+        function (lity, $) {
+            if ($.cookie('whenToShowDialog') == null) {
+                $.cookie('whenToShowDialog', 'yes', {expires: 1, path: '/'});
+                lity('https://www.youtube.com/embed/164tesSTr7o?controls=0&rel=0');
+            }
+        });*/
+</script>

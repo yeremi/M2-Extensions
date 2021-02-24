@@ -1,0 +1,199 @@
+<style>
+    @media (max-width: 839px) and (min-width: 480px){
+        .mdl-typography--text-right p,
+        .mdl-typography--text-right h3 {
+            text-align: left;
+        }
+    }
+    @media (max-width: 479px){
+        .mdl-typography--text-right p,
+        .mdl-typography--text-right h3 {
+            text-align: left;
+        }
+    }
+</style>
+<div class="page-full-background about-01 bg-page-gray">
+    <div class="klloom-title-wrapper">
+        <div class="mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet mdl-cell--2-col-phone mdl-cell--middle">
+                <h1 class="page-title"><span>About Us</span> > Changing the Rules</h1>
+            </div>
+            <?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Klloom_Pages::html/menu-about.phtml")->toHtml(); ?>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-content-wrapper">
+    <div class="mdl-grid mdl-grid--no-spacing" style="margin-bottom: 52px; margin-top: 60px">
+        <div class="mdl-cell mdl-cell--7-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-cell--bottom">
+            <p style="font-size: 26px;line-height: 30px;">The world is craving changes. And those changes should not come only from people, but also from companies.<br/>
+                We do believe that corporations can monetize their business while making a difference for the future of our planet. Klloom is going to be not only a global, user-driven image bank based on sharing economy, but much more than that. Our goal is to become the world's first tangible initiative that carries a social compromise as an intrinsic part of its core business. Twelve percent of all Klloom’s photo licensing incomes goes to our donation partners. That’s the way it should have always been. That’s the Klloom way of doing things.</p>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-cell--1-offset-desktop mdl-typography--text-center mdl-cell--bottom" style="position: relative">
+            <img class="mdl-cell--hide-phone mdl-cell--hide-tablet" style="width: 95%; position: absolute;top: -420px;left: calc(100% - 310px);" src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/about-bubble-donated.svg'); ?>"/>
+            <img class="mdl-cell--hide-desktop" src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/about-bubble-donated.svg'); ?>"/>
+            <p>
+                <span style="color: #35a8e0">20%</span> of all our photo<br/>
+                licensing incomes<br/>
+                goes to donation.<br/>
+                Read our <a href="/cause-and-effect" title="Cause & Effect">Cause & Effect</a><br/>
+                page to learn more.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="page-full-background about-02 bg-page-gray">
+    <div class="gradient-right-right">
+        <div class="klloom-content-wrapper">
+            <div class="mdl-grid mdl-grid--no-spacing" style="min-height: 480px">
+                <div class="mdl-cell mdl-cell--7-col-desktop mdl-cell--4-col-tablet mdl-cell--7-col-phone mdl-cell--middle mdl-typography--text-left">
+                    <h2 style="font-size: 35px; color: #fff">Image Licensing Made Simple <i style="color: #000;top: 2px;position: relative;" class="icon-shopping-cart-klloom"></i></h2>
+                </div>
+                <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-cell--1-offset-desktop mdl-cell--middle mdl-typography--text-right">
+                    <p style="color: #fff">We’ve been working nonstop to build a trustworthy, user-driven image bank, and that includes thinking carefully about what would be the more reasonable profit distribution and royalty rate practice, considering that the donation is an essential part of our model. Initially, licensing your photos at Klloom will earn you 40% royalties out of the gross profit on every Standard License sold. We assure you this rate won’t be reduced, and we even consider raising that in the future. You'll always keep the rights to your photos and you can license them as many times as needed. Read our <a href="/contributor-agreement" title="Contributor Agreement" style="color: #f19106;">Contributor Agreement</a> to find out more.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #simple-photo-pricing h3,
+    #where-does-the-money-go h3 {
+        color: #fff;
+    }
+
+    #simple-photo-pricing .mdl-typography--text-right p,
+    #where-does-the-money-go .mdl-typography--text-right p {
+        line-height: 42px;
+        height: 42px;
+        padding-right: 8px;
+        margin-bottom: 4px;
+    }
+
+    #simple-photo-pricing .mdl-typography--text-left p,
+    #where-does-the-money-go .mdl-typography--text-left p {
+        margin-bottom: 3px;
+    }
+
+    #simple-photo-pricing .mdl-typography--text-left p span,
+    #where-does-the-money-go .mdl-typography--text-left p span {
+        border: solid 2px #35a8e0;
+        border-radius: 50%;
+        display: inline-block;
+        padding: 0;
+        font-size: 21px;
+        width: 38px;
+        height: 38px;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 4px;
+    }
+</style>
+
+<div class="klloom-content-wrapper" style="padding-top: 53px;padding-bottom: 83px;">
+    <div class="mdl-grid mdl-grid--no-spacing mdl-cell--middle">
+        <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-typography--text-left">
+            <div id="simple-photo-pricing" class="mdl-grid mdl-grid--no-spacing">
+                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-cell--6-offset-desktop mdl-cell--4-offset-tablet mdl-cell--2-offset-phone">
+                    <h2 class="mdl-cell--hide-phone">Simple<br/>photo<br/>pricing:</h2>
+                    <h2 class="mdl-cell--hide-desktop mdl-cell--hide-tablet">Simple photo pricing:</h2>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-typography--text-right">
+                    <p style="text-align: right">US$</p>
+                    <p style="text-align: right">US$</p>
+                    <p style="text-align: right">US$</p>
+                    <p style="text-align: right">US$</p>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-typography--text-left">
+                    <p><span>5</span></p>
+                    <p><span>10</span></p>
+                    <p><span>20</span></p>
+                    <p><span>30</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-typography--text-left">
+            <div id="where-does-the-money-go" class="mdl-grid mdl-grid--no-spacing">
+                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-cell--6-offset-desktop mdl-cell--4-offset-tablet mdl-cell--2-offset-phone">
+                    <h2 class="mdl-cell--hide-phone">Where<br/>does<br/>the money<br/>go?</h2>
+                    <h2 class="mdl-cell--hide-desktop mdl-cell--hide-tablet">Where does the money go?</h2>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-typography--text-right">
+                    <p style="color: #F19106; text-align: right">Photographer</p>
+                    <p style="color: #35a8e0; text-align: right">Donation</p>
+                    <p style="text-align: right">Klloom</p>
+                    <p style="text-align: right">Taxes and Fees</p>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-typography--text-left">
+                    <p><span>40</span>%</p>
+                    <p><span>20</span>%</p>
+                    <p><span>20</span>%</p>
+                    <p><span>20</span>%</p>
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--3-offset-desktop mdl-cell--bottom mdl-typography--text-right">
+            <h3 style="color:#e94e1c;">Taxes & Fees:</h3>
+            <p style="color: #888888">It’s hard, but it’s necessary and we have to be honest. Dealing with money involves many responsibilities, and we aim for transparency and reliability. Most Image Banks don’t make it clear for users how much of the photographer royalties is deducted to pay taxes and fees, as they usually show percentages that are related to the net profit instead of the gross sales. The 40% of royalties given to photographers actually mean 50% of the net profit. However, we prefer not to hide real numbers under a more appealing percentage. It’s our way to do things, it will always be.</p>
+        </div>
+    </div>
+</div>
+
+<div class="page-full-background about-03 bg-page-gray">
+    <div class="klloom-content-wrapper" style="padding-top: 60px;padding-bottom: 60px;">
+        <div class="mdl-grid mdl-grid--no-spacing" style="min-height: 480px">
+            <div class="mdl-cell mdl-cell--7-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--middle mdl-typography--text-left">
+                <h2 style="font-size: 35px; color: #fff">Connect with Brands <i style="color: #35a8e0; top: 2px;position: relative;" class="icon-tag-klloom"></i></h2>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--middle mdl-typography--text-right">
+                <p style="font-size: 22px;line-height: 30px;color: rgba(255, 255, 255, 0.6);">As a user-driven image bank, Klloom encourages all photographers to start a close relationship with the brands that take part in their daily life and to sell brand-related images directly to companies. For those brands, it is an opportunity to buy real life photos straight from people who are using their products, while helping a good cause. That’s a new way of thinking about the image licensing market chain.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="klloom-content-wrapper">
+    <div class="mdl-grid mdl-grid--no-spacing" style="margin-bottom: 100px;margin-top: 110px;">
+        <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-typography--text-center" style="position: relative">
+            <img class="mdl-cell--hide-desktop mdl-cell--hide-phone" src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/about-bubble-photo.svg'); ?>"/>
+            <p class="mdl-cell--hide-desktop mdl-cell--hide-phone" style="font-size: 16px; color:#f19106;">#your_favorite_brand</p>
+
+            <img class="mdl-cell--hide-tablet" style="width: 90%; position: absolute;top: -200px;left: calc(100% - 310px);" src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/about-bubble-photo.svg'); ?>"/>
+            <p class="mdl-cell--hide-tablet" style="font-size: 26px; color:#f19106;padding-top: 80px;">#your_favorite_brand</p>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--2-col-tablet mdl-cell--1-offset-tablet mdl-cell--6-col-phone mdl-typography--text-right">
+            <img src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/about-graphic-03.svg'); ?>" style="margin-right: 20px"/>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-typography--text-right">
+            <p>Building a great community that connects photo lovers, brands and humanitarian causes is our main goal. Klloom’s team has been working to develop and launch new features which will help companies to engage with photographers and consumers worldwide while making a difference for a range of humanitarian actions around the globe.</p>
+        </div>
+    </div>
+</div>
+
+<div class="page-full-background about-04 bg-page-gray">
+    <div class="gradient-right-right">
+        <div class="klloom-content-wrapper" style="padding-top: 60px;padding-bottom: 60px;">
+            <div class="mdl-grid mdl-grid--no-spacing" style="height: 480px">
+                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-desktop mdl-cell--4-col-phone mdl-cell--middle mdl-typography--text-left">
+                    <h2 style="font-size: 35px; color: #fff; display: inline-block">We are in Beta</h2>
+                    <img style="position: relative;top: -15px;left: 10px;" src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/about-graphic-04.svg'); ?>"/>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--hide-tablet mdl-cell--middle mdl-typography--text-right">
+
+                </div>
+                <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-cell--1-offset-tablet mdl-cell--middle mdl-typography--text-right">
+                    <p style="color: #fff">Klloom’s current platform is running on a Beta Version, which means that it contains most of the major features, but is not yet complete. We have been constantly improving and testing our codes and features, and even though we make an effort to reduce impacts to users, some of our services are subject to temporary or permanent interruptions and changes without early notification. We do count on our users feedback to help us improve the platform and we apologise in advance for any bug that may affect your experience here. </p>
+                    <p>Help us to keep Klloom healthy: <a class="button-bug-report" href="/bug-report" title="Report Issue" style="color: #fff">report bug</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mdl-grid mdl-grid--no-spacing" style="height: 480px; padding-top: 50px; padding-bottom: 60px">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--middle mdl-typography--text-center">
+        <img style="display: inline-block" src="<?php echo $this->getViewFileUrl('Klloom_Pages::images/backgrounds/history-of-photography-camera-01.png'); ?>"/>
+    </div>
+</div>

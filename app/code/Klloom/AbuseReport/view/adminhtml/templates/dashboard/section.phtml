@@ -1,0 +1,24 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+?>
+
+<section class="klloom-abusereport row" data-index="klloom-abusereport">
+    <div class="klloom-abusereport-description col-m-9">
+        <header class="dashboard-item-title">
+            <?= $block->escapeHtml(__('Abuse Report')) ?>
+        </header>
+        <div class="dashboard-item-content">
+            <?= $block->escapeHtml(__('This feature is in beta testing. Here we will add alerts about comments to be analyzing')) ?>
+        </div>
+    </div>
+    <div class="klloom-abusereport-actions col-m-3" style="text-align: right">
+        <a href="<?= $block->escapeUrl($block->getUrl('klloom_abusereport/post')) ?>" target="_self" class="action action-secondary"
+           title="<?= $block->escapeHtmlAttr(__('Go to Abuse Report')) ?>" style="margin-right: 20px; font-size: 1.6rem;letter-spacing: .025em;padding-bottom: .6875em;padding-top: .6875em;">
+            <span><?= $block->escapeHtml(__('Go to Abuse Report')) ?></span>
+        </a>
+    </div>
+</section>

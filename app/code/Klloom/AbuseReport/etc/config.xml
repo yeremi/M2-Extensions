@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <abuse>
+            <abuse>
+                <enabled>1</enabled>
+            </abuse>
+            <email>
+                <recipient_email>
+                    <![CDATA[calazans@klloom.com]]>
+                </recipient_email>
+                <abuse_email_template>abuse_email_abuse_email_template</abuse_email_template>
+                <notify_email_template>abuse_email_notify_email_template</notify_email_template>
+                <notify_email_sender>support</notify_email_sender>
+            </email>
+        </abuse>
+    </default>
+</config>

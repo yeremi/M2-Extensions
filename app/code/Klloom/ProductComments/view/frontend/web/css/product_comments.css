@@ -1,0 +1,139 @@
+.customcomponent-wrapper table > thead > tr > th,
+.customcomponent-wrapper table > tbody > tr > th,
+.customcomponent-wrapper table > tfoot > tr > th,
+.customcomponent-wrapper table > thead > tr > td,
+.customcomponent-wrapper table > tbody > tr > td,
+.customcomponent-wrapper table > tfoot > tr > td {
+    margin: 0;
+    padding: 0
+}
+
+.customcomponent-wrapper table#comments-list > tbody > tr > td {
+    padding-bottom: 15px;
+}
+
+.customcomponent-wrapper table > tbody > tr > td.actions-column {
+    width: 15px
+}
+
+.customcomponent-wrapper table > tbody > tr > td.actions-column a i {
+    color: #35a8e0;
+    font-weight: bold !important;
+    font-size: 1.2rem !important;
+}
+
+.customcomponent-wrapper table > tbody > tr > td.info-column {
+    padding-top: 3px
+}
+
+.customcomponent-wrapper table > tbody > tr > td.info-column a {
+    color: #000;
+}
+
+.customcomponent-wrapper table > tbody > tr > td.info-column a:hover {
+    color: #35a8e0;
+}
+
+.customcomponent-wrapper .comment-customer-name {
+    font-size: 1.1rem;
+    color: #000;
+}
+
+.customcomponent-wrapper .comment-date {
+    color: #c6c6c5;
+    font-size: 1.0rem;
+    margin-left: 10px;
+}
+
+.customcomponent-wrapper .comment-comment {
+    font-size: 1.1rem;
+    color: #777;
+    padding-right: 8px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.customcomponent-wrapper p.char-left {
+    font-size: 1rem;
+    text-align: right;
+    padding: 0 4px;
+    margin: 0;
+}
+.customcomponent-wrapper p.char-left.warning {
+    color: #e84e1b;
+}
+
+.customcomponent-wrapper #comment-form {
+    margin: 20px 0 25px 0;
+    min-height: 32px
+}
+
+.customcomponent-wrapper .comment-form textarea {
+    padding: 6px;
+    min-height: 32px;
+    border: solid 1px #fff;
+}
+
+.customcomponent-wrapper .comment-form textarea.mage-error,
+.customcomponent-wrapper .comment-form textarea:focus {
+    padding: 6px;
+}
+
+.customcomponent-wrapper .klloom-button-no-logged-in,
+.customcomponent-wrapper .klloom-flat-button {
+    float: right;
+    background-color: #b1b1b1;
+    color: #fff;
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 3px !important;
+    padding: 8px 16px !important;
+    position: relative;
+}
+
+.customcomponent-wrapper .klloom-flat-button:hover {
+    background-color: #c6c6c5;
+    color: #fff;
+    border: none;
+    box-shadow: none !important;
+    border-radius: 3px;
+    padding: 8px 16px;
+}
+
+.customcomponent-wrapper .klloom-flat-button:after,
+.customcomponent-wrapper .klloom-flat-button:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.customcomponent-wrapper .klloom-flat-button:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: #b1b1b1;
+    border-width: 6px;
+    margin-left: -6px;
+}
+
+.customcomponent-wrapper .klloom-flat-button:hover:after {
+    border-top-color: #c6c6c5;
+}
+
+.customcomponent-wrapper .photographer-avatar {
+    /*background: url(images/bg.jpg) no-repeat center center fixed;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: inherit;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

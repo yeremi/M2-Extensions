@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="376.791px" height="104.989px" viewBox="0 0 376.791 104.989" enable-background="new 0 0 376.791 104.989"
+	 xml:space="preserve">
+<g>
+	<text transform="matrix(1 0 0 1 18.9209 52.2637)" fill="#1D1D1B" font-family="'Helvetica-Bold'" font-size="11.9378">Photo price (US$)</text>
+</g>
+<g>
+	<g>
+		<circle fill="#AEAEAE" cx="156.629" cy="46.771" r="22.597"/>
+		<g>
+			<text transform="matrix(1 0 0 1 150.5615 54.709)" fill="#FFFFFF" font-family="'Helvetica-Bold'" font-size="22.8487">5</text>
+		</g>
+	</g>
+	<g>
+		<circle fill="#AEAEAE" cx="213.369" cy="46.771" r="21.912"/>
+		<g>
+			<text transform="matrix(1 0 0 1 201.3145 54.4668)" fill="#FFFFFF" font-family="'Helvetica-Bold'" font-size="22.1552">10</text>
+		</g>
+	</g>
+	<circle fill="#009BDF" cx="269.422" cy="46.771" r="21.911"/>
+	<g>
+		<text transform="matrix(1 0 0 1 257.3672 54.4668)" fill="#FFFFFF" font-family="'Helvetica-Bold'" font-size="22.1552">20</text>
+	</g>
+	<g>
+		<circle fill="#AEAEAE" cx="325.474" cy="46.771" r="21.912"/>
+		<g>
+			<text transform="matrix(1 0 0 1 313.4199 54.4668)" fill="#FFFFFF" font-family="'Helvetica-Bold'" font-size="22.1552">30</text>
+		</g>
+	</g>
+	<g>
+		<polygon fill="#FFFFFF" points="280.744,77.347 280.744,81.462 278.683,81.462 278.683,75.286 276.626,75.286 276.626,79.403 
+			274.568,79.403 274.568,73.229 272.51,73.229 272.51,79.403 270.452,79.403 270.452,64.996 266.336,64.996 266.336,85.577 
+			264.276,85.577 264.276,81.462 262.219,81.462 262.219,79.403 260.16,79.403 260.16,77.347 256.047,77.347 256.047,81.462 
+			258.104,81.462 258.104,83.52 260.16,83.52 260.16,87.637 262.219,87.637 262.219,89.694 264.276,89.694 264.276,91.753 
+			266.336,91.753 266.336,95.87 278.683,95.87 278.683,91.753 280.744,91.753 280.744,87.637 282.8,87.637 282.8,77.347 		"/>
+		<path fill="#000100" d="M253.988,81.462h2.059v-4.115h-2.059V81.462z M256.047,75.286v2.061h4.113v-2.061H256.047z M260.16,77.347
+			v2.057h2.059v-2.057H260.16z M264.276,79.403h-2.058v2.059h2.058v4.115h2.06V64.996h-2.06V79.403z M266.336,62.938v2.058h4.116
+			v-2.058H266.336z M258.104,83.52v-2.058h-2.057v2.058H258.104z M260.16,87.637V83.52h-2.057v4.117H260.16z M262.219,89.694v-2.058
+			h-2.059v2.058H262.219z M264.276,91.753v-2.059h-2.058v2.059H264.276z M266.336,95.87v-4.117h-2.06v4.117H266.336z
+			 M280.744,75.286v-2.057h-4.118v-2.06h-4.116v-6.174h-2.058v14.407h2.058v-6.174h2.059v6.174h2.058v-4.117h2.057v6.176h2.062
+			v-4.115h2.056v10.29h2.06V75.286H280.744z M280.744,91.753h2.056v-4.116h-2.056V91.753z M278.683,95.87h2.062v-4.117h-2.062V95.87
+			z"/>
+	</g>
+</g>
+</svg>

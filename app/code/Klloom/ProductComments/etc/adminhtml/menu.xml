@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Klloom_ProductComments::comments" title="Comments" module="Klloom_ProductComments" sortOrder="51" resource="Klloom_ProductComments::comments"/>
+        <add id="Klloom_ProductComments::post" title="Manage Comments" module="Klloom_ProductComments" sortOrder="10" action="klloom_productcomments/post" resource="Klloom_ProductComments::post" parent="Klloom_ProductComments::comments"/>
+        <!--<add id="Mageplaza_HelloWorld::hello_configuration" title="Configuration" module="Mageplaza_HelloWorld" sortOrder="99" parent="Mageplaza_HelloWorld::helloworld" action="adminhtml/system_config/edit/section/helloworld" resource="Mageplaza_HelloWorld::helloworld_configuration"/>-->
+    </menu>
+</config>

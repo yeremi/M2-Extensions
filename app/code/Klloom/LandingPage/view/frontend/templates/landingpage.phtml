@@ -1,0 +1,448 @@
+<style>
+    .about.link {
+        margin-left: 15px;
+    }
+    .go-home.link {
+        float: right;
+        height: 28px;
+        margin-left: 0;
+        margin-top: 9px;
+        /*margin-right: 0;*/
+        padding-top: 11px;
+        padding-right: 0;
+        color: #35a8e0;
+    }
+
+    .page-header .header.panel{
+        padding-left: 0;
+    }
+
+    #switcher-currency,
+    .minicart-wrapper,
+    .conation-counter,
+    .nav-toggle {
+        display: none;
+    }
+
+    /* Tablet */
+    @media (min-width: 768px), print {
+        .go-home.link {
+            margin-right: 15px;
+            padding-right: 20px;
+        }
+
+        .page-main {
+            width: 100%;
+            max-width: inherit;
+            padding: 0;
+        }
+
+        .page-header {
+            border-bottom: none;
+        }
+        .columns .column.main {
+            padding-bottom: 0;
+        }
+    }
+
+    /* Phone */
+    @media only screen and (max-width: 767px) {
+        .columns .column.main {
+            padding-bottom: 0;
+        }
+
+        .page-footer {
+            margin-top: 0;
+        }
+
+        .page-header {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .page-main {
+            padding: 0;
+        }
+    }
+
+    /*@media only screen and (max-width: 639px) {*/
+        .logo {
+            margin: 0 0 10px 0
+        }
+    /*}*/
+
+    .btn-android-gp img {
+        width: 180px;
+    }
+
+    .land-section {
+        height: 496px;
+    }
+
+    .land-section span {
+        color: #35a8e0;
+    }
+
+    .l01 {
+        background-image: url("<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_BACKGROUND_A.png'); ?>");
+    }
+
+    .l02 {
+        background-image: url("<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_BACKGROUND_B.png'); ?>");
+    }
+
+    .l03 {
+        background-image: url("<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_BACKGROUND_C.png'); ?>");
+    }
+
+    .l04 {
+        background-image: url("<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_BACKGROUND_D.png'); ?>");
+    }
+
+    .l05 {
+        background-image: url("<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_BACKGROUND_E.png'); ?>");
+    }
+
+    .l06 {
+        background-image: url("<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_BACKGROUND_F.png'); ?>");
+    }
+
+    #faqs {
+        text-align: left
+    }
+
+    #faqs .fa.-icon {
+        color: #35a8e0;
+    }
+
+    .faqs > ul {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    .faqs .accordion--horizontal {
+        width: auto;
+    }
+
+    .accordion__panel.-accordion__panel.-accordion--active .accordion__heading {
+        color: #35a8e0;
+        border-bottom: none;
+    }
+    .accordion__panel.-accordion__panel.-accordion--active:last-child {
+        border-bottom: none;
+    }
+    .lity-content{
+        padding: 0 12px;
+    }
+    .lity-close {
+        box-shadow: none !important;
+        position: absolute;
+        right: -30px;
+        top: -10px;
+    }
+</style>
+
+<!-- Section 1 -->
+<section class="l01 background-cover">
+    <div class="mdl-grid land-section">
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop mdl-typography--text-center mdl-cell--middle">
+            <h2 class=" mdc-typography--title mdl-cell--hide-tablet mdl-cell--hide-desktop" style="color: #fff">Sell your photos<br/>directly to brands<br/>all over<br/>the world!</h2>
+            <h2 class=" mdc-typography--title mdl-cell--hide-phone" style="color: #fff">Sell your photos directly to brands<br/>all over the world!</h2>
+            <p style="color: #fff">It’s easy, it’s free, it’s for everyone.</p>
+            <br/>
+            <a href="<?php echo $block->getUrl('customer/account/create/', ['_secure' => $this->getRequest()->isSecure()]); ?>" class="klloom-large-button" style="text-transform: inherit !important;"><?= $block->escapeHtml(__('Sign Up Free!')) ?></a>
+            <a id="watch-video" href="javascript:;" style="margin-top: 18px;display: block;">
+                What's Klloom? <span style="color: #ffffff; display: block;">watch video</span>
+            </a>
+            <br/>
+            <br/>
+            <a class="btn-android-gp" href='https://play.google.com/store/apps/details?id=com.klloom.klloomshortcut&utm_source=website&utm_campaign=landingpage&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+                <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2 -->
+<style>
+    .responsive-scroll {
+        width: 100%;
+        margin: auto;
+        visibility: hidden;
+    }
+
+    .responsive-scroll div img {
+        width: 100%;
+    }
+</style>
+<section>
+    <div class="mdl-grid" style="padding: 40px">
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--hide-desktop mdl-cell--middle">
+            <h3 class=" mdc-typography--title  mdl-typography--text-center" style="color: #35a8e0">We all have a great picture<br>stored somewhere</h3>
+        </div>
+
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop mdl-cell--3-offset-desktop mdl-cell--middle">
+            <div class="responsive-scroll">
+                <div>
+                    <img src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC_G.png'); ?>"/>
+                </div>
+                <div>
+                    <img src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC_H.png'); ?>"/>
+                </div>
+                <div>
+                    <img src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC_I.png'); ?>"/>
+                </div>
+                <div>
+                    <img src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC_J.png'); ?>"/>
+                </div>
+                <div>
+                    <img src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC_L.png'); ?>"/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone mdl-cell--middle">
+            <h3 class=" mdc-typography--title" style="color: #35a8e0; font-size: 28px; margin: 0; padding: 0">We all have<br/>a great picture<br>stored somewhere</h3>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3 -->
+<section class="l03 background-cover">
+    <div class="mdl-grid land-section">
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop mdl-typography--text-center mdl-cell--middle">
+
+            <img src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC__A.svg'); ?>"/>
+
+            <h3 class="mdl-cell--hide-tablet mdl-cell--hide-desktop mdc-typography--title"
+                style="color: #fff;font-size: 2rem;margin-top: 0;">
+                Klloom is an <span>open</span>,<br/>
+                <span>user-generated</span> and <span>generous</span><br/>
+                image bank based on <span>sharing</span><br/>
+                <span>economy</span> where anyone can<br/>
+                sell their photos directly to<br/>
+                <span>brands</span>, media companies and<br/>
+                agencies while helping a<br/>
+                <span>humanitarian</span> cause. Make<br/>
+                <span>extra money</span> doing what you<br/>
+                love and support an <span>alternative</span><br/>
+                <span>stock photo market</span>.
+            </h3>
+
+            <h3 class="mdl-cell--hide-phone mdc-typography--title" style="color: #fff;font-size: 2rem;margin-top: 0;">
+                Klloom is an <span>open</span>, <span>user-generated</span> and <span>generous</span><br/>
+                image bank based on <span>sharing economy</span> where anyone<br/>
+                can sell their photos directly to <span>brands</span>, media<br/>
+                companies and agencies while helping a <span>humanitarian</span> cause.<br/>
+                Make <span>extra money</span> doing what you love<br/>
+                and support an <span>alternative stock photo market</span>.
+            </h3>
+
+            <br/>
+            <a href="<?php echo $block->getUrl('customer/account/create/', ['_secure' => $this->getRequest()->isSecure()]); ?>"><?= $block->escapeHtml(__('Sign Up Free!')) ?></a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4 -->
+<section>
+    <div class="mdl-grid land-section">
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop mdl-typography--text-center mdl-cell--middle">
+            <h2 class="mdl-cell--hide-tablet mdl-cell--hide-desktop mdc-typography--title" style="color: #35a8e0">Where does<br/>the money go?</h2>
+            <img class="mdl-cell--hide-tablet mdl-cell--hide-desktop" src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC_B.svg'); ?>"/>
+            <img class="mdl-cell--hide-phone" src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC_M.svg'); ?>" style="width: 800px" />
+
+            <p class="mdl-cell--hide-tablet mdl-cell--hide-desktop" style="color: #000">Standard image banks give<br/>
+                30% to contributors at most.<br/>
+                Klloom gives you 40% of its gross earnings,<br/>
+                and 20% for donation!</p>
+
+            <p class="mdl-cell--hide-phone" style="color: #000">Standard image banks give 30% to contributors at most.<br/>
+                Klloom gives you 40% of its gross earnings, and 20% for donation!</p>
+        </div>
+    </div>
+</section>
+
+<!-- Section 5 -->
+<section class="l04 background-cover">
+    <div class="mdl-grid land-section">
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop mdl-typography--text-center mdl-cell--middle">
+            <img class="mdl-cell--hide-tablet mdl-cell--hide-desktop" src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC_D.svg'); ?>"/>
+            <img class="mdl-cell--hide-phone" src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC_E.svg'); ?>" style="width: 600px"/>
+        </div>
+    </div>
+</section>
+
+<!-- Section 6 -->
+<section>
+    <div class="mdl-grid land-section">
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop mdl-typography--text-center mdl-cell--middle">
+            <img src="<?php echo $block->getViewFileUrl('Klloom_LandingPage::images/_landing_page_GRAPHIC__F.svg'); ?>"/>
+            <h2 class=" mdc-typography--title" style="color: #000;">
+                Klloom is free <br/>
+                and transparent.<br/>
+                No membership fees,<br/>
+                no ads,<br/>
+                no user-data selling.
+            </h2>
+            <br/>
+            <a href="<?php echo $block->getUrl('customer/account/create/', ['_secure' => $this->getRequest()->isSecure()]); ?>" style="color: #35a8e0"><?= $block->escapeHtml(__('Sign Up Free!')) ?></a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 7 -->
+<section class="l06 background-cover">
+    <div class="mdl-grid land-section">
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop mdl-typography--text-center mdl-cell--middle">
+            <p style="color: #fff">Whether you are a casual,<br>an amateur or a pro</p>
+            <h2 class=" mdc-typography--title" style="color: #fff;font-size: 3rem;">
+                Become<br/>
+                a klloomer!
+            </h2>
+            <a href="<?php echo $block->getUrl('customer/account/create/', ['_secure' => $this->getRequest()->isSecure()]); ?>" class="klloom-large-button" style="text-transform: inherit !important;"><?= $block->escapeHtml(__('Sign Up Free!')) ?></a>
+            <h2 class=" mdc-typography--title" style="color: #fff;font-size: 3rem;">
+                And start a photo<br/>
+                revolution!
+            </h2>
+
+        </div>
+    </div>
+</section>
+
+<!-- Section 8 -->
+<section>
+    <div class="mdl-grid mdl-grid--no-spacing" style="min-height: 496px">
+        <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--8-col-desktop mdl-cell--2-offset-desktop mdl-typography--text-center mdl-cell--middle">
+
+            <div id="faqs" style="margin: 40px 0">
+
+                <h2 class=" mdc-typography--title" style="color: #35a8e0; margin-top: 0; text-align: center">Any Questions?</h2>
+
+                <ul class="-accordion accordion accordion--basic accordion--vertical">
+                    <li class="accordion__panel">
+            <span class="accordion__heading">Can I license my photos on Klloom without donating? <i
+                        class="fa -icon -icon--right"></i></span>
+                        <div class="accordion__expander">Fortunately not. :) Donation is an essential part of this
+                            community. We do
+                            believe in new ways of generating and sharing wealth.
+                        </div>
+                    </li>
+                    <li class="accordion__panel">
+            <span class="accordion__heading">Can I sell my photos on Klloom and on other websites at the same time? <i
+                        class="fa -icon -icon--right"></i></span>
+                        <div class="accordion__expander">Yes, you can sell your image through other commercial licensing
+                            vendors, or
+                            directly to commercial buyers. But your image must not be available on any free stock image
+                            bank (such as
+                            Pexels or Unsplash). Besides, since Klloom’s photos have an intrinsic social purpose
+                            involved, we would be
+                            very grateful if you chose photos from your collection exclusively for licensing on Klloom.
+                        </div>
+                    </li>
+                    <li class="accordion__panel">
+            <span class="accordion__heading">Does Klloom curate and approve the photos before they are published? <i
+                        class="fa -icon -icon--right"></i></span>
+                        <div class="accordion__expander">No, we don't curate the photos beforehand. Instead, Klloom
+                            trusts and
+                            depends on its user community’s wisdom and reasonableness to identify, judge, rate and
+                            report the content
+                            that may be inappropriate, offensive or not in accordance with our Terms and our Behavior
+                            Guidelines.
+                            <br/>
+                            You can always hit our Report button to disclose any member. Behavior outside of Klloom
+                            guidelines may
+                            result in account suspension or permanent removal from our network. We have created a list
+                            of good-conduct
+                            rules that applies not only to comments and texts, but also to all uploaded images. By using
+                            Klloom, you
+                            must adhere to these guidelines.
+                        </div>
+                    </li>
+
+                    <li class="accordion__panel">
+            <span class="accordion__heading">I think that 40% of license fee for authors is not fair. Why don’t you raise it? <i
+                        class="fa -icon -icon--right"></i></span>
+                        <div class="accordion__expander">Well, we’ve been working hard to build a trustworthy image
+                            bank, and that
+                            includes thinking about what would be a fair profit distribution and royalty rate practice,
+                            considering
+                            that the donation is an essential part of our model.<br/>
+                            One of our biggest challenges is to make the photo licensing process more simple and
+                            accessible, and it
+                            includes a simple and reasonable pricing.<br/>
+                            Think of it, everyone has at least one great photo archived somewhere in a hard drive; there
+                            are billions
+                            of great iPhone shots that are just kept in monthly backups, and they would probably never
+                            be turned into
+                            money at all, neither in delight for photo lovers eyes!<br/>
+                            So, what about turning “nothing" into a 20-dollar photo that will earn you 40% of the fee
+                            for each license
+                            sold and, still more, generating a compulsory contribution of 20% directly to a humanitarian
+                            cause!
+                            Doesn’t it sound great enough?<br/>
+                            Initially, licensing your photos at Klloom will earn you 40% royalties out of the gross
+                            profit on every
+                            Standard License sold. We assure you this rate won’t be reduced, and we do consider raising
+                            that in the
+                            future. But, before that, we need to look at the big picture. It’s not only about earning
+                            some money, it’s
+                            about striving to prove that it is possible to have an economic model where monetization and
+                            social
+                            altruism can walk together.
+                        </div>
+                    </li>
+                    <li class="accordion__panel">
+            <span class="accordion__heading">When should I mark my photo as “Editorial Use Only”? <i
+                        class="fa -icon -icon--right"></i></span>
+                        <div class="accordion__expander">Images marked "Editorial Use Only” add an exception to the
+                            Klloom Standard
+                            License.<br/>
+                            When you mark your photo as "Editorial Use Only" you are saying that it is not allowed to be
+                            used for any
+                            commercial purpose, including promotional, endorsement, advertorial, advertising or
+                            merchandising purpose.<br/>
+                            You should (probably) mark your photo as Editorial Use Only if:<br/>
+
+                            1. You are a celebrity, public figure or fashion model, and you appears in the photo.<br/>
+                            2. You haven’t been authorized by all models and/or properties owners/representatives that
+                            appears or have
+                            their property depicted in your photo with a valid Release.<br/>
+                            3. You don’t want your photo to be used for commercial purposes (for whatever reason).
+                        </div>
+                    </li>
+                    <li class="accordion__panel">
+            <span class="accordion__heading">Does Klloom also offers monthly or annual subscriptions? <i
+                        class="fa -icon -icon--right"></i></span>
+                        <div class="accordion__expander">Not yet. For now, we need to test our codes and business model
+                            in a simpler
+                            way. We think it may be possible in the future, though. It’s just a start.
+                        </div>
+                    </li>
+                    <li class="accordion__panel">
+            <span class="accordion__heading">Is Klloom an NGO (Non-governmental Organization)? <i
+                        class="fa -icon -icon--right"></i></span>
+                        <div class="accordion__expander">No, it isn't. We just want to be an example of honest and
+                            sincere business
+                            that, besides being a business, also provide a new income alternative for photo lovers and
+                            generate a
+                            powerful social contribution mechanism.
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Klloom_LandingPage/js/landingpage" : {}
+    }
+}
+</script>

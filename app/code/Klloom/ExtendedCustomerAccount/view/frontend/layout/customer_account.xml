@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+    <body>
+        <referenceContainer name="sidebar.main">
+            <block class="Magento\Framework\View\Element\Html\Links" name="photography_account_navigation" before="-" cacheable="false" template="Klloom_ExtendedCustomerAccount::account/navigation.phtml" />
+            <block class="Magento\Framework\View\Element\Html\Links" name="privacy_account_navigation" after="customer_account_navigation" cacheable="false" template="Klloom_ExtendedCustomerAccount::account/privacy.phtml" />
+        </referenceContainer>
+
+        <move element="privacypolicy" destination="privacy_account_navigation" before="-" />
+        <move element="customer-account-navigation-newsletter-subscriptions-link" destination="privacy_account_navigation" after="-" />
+
+    </body>
+</page>

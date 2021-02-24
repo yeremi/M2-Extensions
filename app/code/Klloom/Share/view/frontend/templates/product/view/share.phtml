@@ -1,0 +1,45 @@
+<?php
+/**
+ * https://css-tricks.com/simple-social-sharing-links/
+ * https://github.com/bradvin/social-share-urls/blob/master/code/php/SocialMedia.php
+ * https://codepen.io/patrickkahl/pen/DxmfG
+ */
+
+$product = $block->getCurrentProduct();
+
+$title       = $product->getName();
+$url         = $product->getProductUrl();
+$description = $product->getDescription();
+$hashtag     = 'klloom';
+?>
+<style>
+    .webui-popover.webui-popover-klloom-share-options {
+        min-width: 30px;
+    }
+
+    .webui-popover-klloom-share-options a {
+        display: block;
+        margin: 4px auto;
+        text-align: center;
+        color: #222222;
+        padding: 8px 0;
+    }
+
+    .webui-popover-klloom-share-options a:hover {
+        color: #35a8e0;
+    }
+</style>
+<a href="javascript:;" class="show-shareThis" style="display: none"> <i class="icon-share-klloom"></i></a>
+<div id="show-shareThis-content" style="display: none">
+    <a href="https://www.facebook.com/sharer.php?u=<?= $url ?>" title="<?= $title; ?>" target="_blank"><i class="fab fa-facebook-f fa-lg"></i></a>
+    <a href="https://twitter.com/share?url=<?= $url ?>&amp;text=<?= $description; ?>&amp;hashtags=<?= $hashtag; ?>" title="<?= $title; ?>" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= $url ?>" title="<?= $title; ?>" target="_blank"><i class="fab fa-linkedin-in fa-lg"></i></a>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Klloom_Share/js/share": { }
+    }
+}
+</script>

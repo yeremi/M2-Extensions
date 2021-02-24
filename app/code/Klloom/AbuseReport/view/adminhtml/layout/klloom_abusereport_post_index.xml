@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Klloom\AbuseReport\Block\Adminhtml\Post" name="klloom_post_grid">
+                <block class="Magento\Backend\Block\Widget\Grid" name="klloom_post_grid.grid" as="grid">
+                    <arguments>
+                        <argument name="id" xsi:type="string">entity_id</argument>
+                        <argument name="dataSource" xsi:type="object">Klloom\AbuseReport\Model\ResourceModel\Post\Grid\Collection</argument>
+                        <argument name="default_sort" xsi:type="string">created_at</argument>
+                        <argument name="default_dir" xsi:type="string">DESC</argument>
+                        <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="klloom_post_grid.grid.columnSet" as="grid.columnSet">
+                        <arguments>
+                            <argument name="rowUrl" xsi:type="array">
+                                <item name="path" xsi:type="string">*/*/edit</item>
+                            </argument>
+                        </arguments>
+                        <!--<block class="Magento\Backend\Block\Widget\Grid\Column" as="product_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Product</argument>
+                                <argument name="index" xsi:type="string">product_id</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-product_id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-product_id</argument>
+                            </arguments>
+                        </block>
+
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="productname">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Product Name</argument>
+                                <argument name="index" xsi:type="string">productname</argument>
+                                <argument name="filter_index" xsi:type="string">cpev.value</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-productname</argument>
+                                <argument name="header_css_class" xsi:type="string">col-productname</argument>
+                            </arguments>
+                        </block>
+
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="customer_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Customer</argument>
+                                <argument name="index" xsi:type="string">customer_id</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-customer_id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-customer_id</argument>
+                            </arguments>
+                        </block>
+                        -->
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.klloompostgrid.grid.columnSet.firstname" as="firstname">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Reported by</argument>
+                                <argument name="index" xsi:type="string">firstname</argument>
+                                <argument name="default" xsi:type="string">----</argument>
+                                <argument name="header_css_class" xsi:type="string">col-first-name</argument>
+                                <argument name="column_css_class" xsi:type="string">col-first-name</argument>
+                                <argument name="renderer" xsi:type="string">Klloom\AbuseReport\Block\Adminhtml\Grid\Column\Renderer\FrontendCustomer</argument>
+                            </arguments>
+                        </block>
+                        <!--
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.klloompostgrid.grid.columnSet.lastname" as="lastname">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Customer Last Name</argument>
+                                <argument name="index" xsi:type="string">lastname</argument>
+                                <argument name="default" xsi:type="string"></argument>
+                                <argument name="header_css_class" xsi:type="string">col-last-name</argument>
+                                <argument name="column_css_class" xsi:type="string">col-last-name</argument>
+                            </arguments>
+                        </block>
+
+                        -->
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="report">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Report type</argument>
+                                <argument name="index" xsi:type="string">report</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-comment</argument>
+                                <argument name="header_css_class" xsi:type="string">col-comment</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.klloompostgrid.grid.columnSet.sku" as="sku">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Photo name</argument>
+                                <argument name="index" xsi:type="string">sku</argument>
+                                <argument name="default" xsi:type="string"></argument>
+                                <argument name="header_css_class" xsi:type="string">col-sku</argument>
+                                <argument name="column_css_class" xsi:type="string">col-sku</argument>
+                                <argument name="renderer" xsi:type="string">Klloom\AbuseReport\Block\Adminhtml\Grid\Column\Renderer\FrontendProduct</argument>
+                            </arguments>
+                        </block>
+                        <!--<block class="Magento\Backend\Block\Widget\Grid\Column" as="stop_by_abuse">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Stop by Abuse</argument>
+                                <argument name="index" xsi:type="string">stop_by_abuse</argument>
+                                <argument name="type" xsi:type="string">options</argument>
+                                <argument name="options" xsi:type="array">
+                                    <item name="yes" xsi:type="array">
+                                        <item name="value" xsi:type="string">1</item>
+                                        <item name="label" xsi:type="string" translate="true">Yes</item>
+                                    </item>
+                                    <item name="no" xsi:type="array">
+                                        <item name="value" xsi:type="string">0</item>
+                                        <item name="label" xsi:type="string" translate="true">No</item>
+                                    </item>
+                                </argument>
+                                <argument name="column_css_class" xsi:type="string">col-stop-by-abuse</argument>
+                                <argument name="header_css_class" xsi:type="string">col-stop-by-abuse</argument>
+                            </arguments>
+                        </block>-->
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="created_at">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Reported on</argument>
+                                <argument name="index" xsi:type="string">created_at</argument>
+                                <argument name="type" xsi:type="string">date</argument>
+                                <argument name="column_css_class" xsi:type="string">col-created_at</argument>
+                                <argument name="header_css_class" xsi:type="string">col-created_at</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.catalog.product.set.grid.columnSet.download" as="download">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Actions</argument>
+                                <argument name="index" xsi:type="string">product</argument>
+                                <argument name="filter" xsi:type="string">0</argument>
+                                <argument name="sortable" xsi:type="string">0</argument>
+                                <argument name="type" xsi:type="string">action</argument>
+                                <argument name="renderer" xsi:type="string">Klloom\AbuseReport\Block\Adminhtml\Grid\Column\Renderer\FrontendUrl</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

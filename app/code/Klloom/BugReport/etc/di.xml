@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Klloom\BugReport\Model\MailInterface" type="Klloom\BugReport\Model\Mail"/>
+    <preference for="Klloom\BugReport\Model\ConfigInterface" type="Klloom\BugReport\Model\Config"/>
+    <preference for="\Magento\Framework\Mail\Template\TransportBuilder" type="Klloom\BugReport\Model\Mail\TransportBuilder"/>
+    <type name="Magento\Config\Model\Config\TypePool">
+        <arguments>
+            <argument name="sensitive" xsi:type="array">
+                <item name="bug/email/recipient_email" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

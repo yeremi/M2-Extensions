@@ -1,0 +1,111 @@
+<?php
+$customerGroup = $this->helper('Klloom\License\Model\Helper\Customer')->getCustomerGroup();
+$licenseHelper = $this->helper('Klloom\License\Model\Helper\Data');
+$product_id   = $this->getRequest()->getParam('id');
+$licenseSelected = $block->getParentBlock()->getProduct($product_id)->getKlloomLicense();
+$licenses = $licenseHelper->getCatalogResourceEavAttribute('klloom_license');
+$isCelebrity = (mb_strtolower($customerGroup) == 'celebrity' || mb_strtolower($customerGroup) == 'model') ?  true : false;
+$description = array(
+    1 => __('Image can be used for commercial<br>and editorial purposes.'),
+    2 => __('Image can NOT be used for commercial purposes.')
+);
+?>
+<style>
+    .span-required::after {
+        content: "*";
+        color: #36A9E0;
+        margin: 0 0 0 6px;
+        font-size: 16px;
+    }
+</style>
+<fieldset class="fieldset" style="margin-top: 20px; display: none" id="klloom_license">
+
+    <div class="klloom-hr" style="margin-bottom: 29px;"></div>
+
+    <div class="field choice klloom_standard_license">
+
+        <div style="margin-bottom: 18px">
+            <span class="span-required"><?= /* @escapeNotVerified */
+                $isCelebrity ? __('Your License') : __('Choose a License') ?>:</span>
+            <p style="color: #9A9A9A;font-size: 1.2rem;margin-top: 4px;margin-bottom: 5px;">
+                <?= /* @escapeNotVerified */ __('License describes how people can use your photo, and how they cannot use.') ?>
+            </p>
+        </div>
+
+        <div class="mdl-grid" style="margin-left: 0; padding-left: 0">
+                <?php if($isCelebrity) :
+                    $license_resume = 'editorial-use-only';
+                    ?>
+                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone" style="margin-left: 0; padding-left: 0;margin-right: 0; padding-right: 0">
+
+                        <span style="color: #9A9A9A"><?php /* @escapeNotVerified */ echo __('Klloom Standard License') ?> 2</span>
+                        <p style="color: #9A9A9A;font-size: 1.1rem;margin-bottom: 5px;">
+                            <?= /* @escapeNotVerified */  __('Unlimited, Perpetual, Non-exclusive, Singular-User') ?>
+                        </p>
+
+                        <label class="label" for="klloom_standard_license" style="padding: 4px 0;display: block;">
+                            <input type="radio" name="product[klloom_license]" value="2" title="<?php /* @escapeNotVerified */ echo __('Klloom Editorial Use Only') ?>" class="required-entry" data-validate="{required:true}" <?= $licenseSelected ? 'checked': ''?>>
+                            <?= /* @escapeNotVerified */ __( 'Editorial Use Only' ) ?>
+                        </label>
+
+                        <p style="color: #9A9A9A;font-size: 1.2rem;margin-top: 4px;margin-bottom: 5px;">
+                            Photos from Celebrity and Model accounts are automatically marked as Editorial Use Only to prevent images from being used for commercial purposes.
+                        </p>
+                        <a href="#" data-resume="<?= $license_resume ?>" class="show-license-resume" style="font-size: 1.2rem">Learn more</a>
+                        <div class="webui-popover-content">
+                            <?php
+                            echo $this->getLayout()
+                                ->createBlock('Magento\Framework\View\Element\Template')
+                                ->setTemplate('Klloom_License::product/license/' . $license_resume . '.phtml')
+                                ->toHtml();
+                            ?>
+                        </div>
+
+                    </div>
+                <?php else :
+
+                    if($licenses){
+                        foreach ($licenses as $license) {
+                            if(empty($license->getValue())) continue;
+                            $license_resume = mb_strtolower(str_replace(' ', '-', $license->getLabel()));
+                            ?>
+                            <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone" style="margin-left: 0; padding-left: 0">
+                                <span style="color: #9A9A9A"><?php /* @escapeNotVerified */ echo __('Klloom Standard License') ?> <?= $license->getValue() ?></span>
+                                <p style="color: #9A9A9A;font-size: 1.1rem;margin-bottom: 5px;">
+                                    <?= /* @escapeNotVerified */  __('Unlimited, Perpetual, Non-exclusive, Singular-User') ?>
+                                </p>
+
+                                <label class="label" for="klloom_standard_license" style="padding: 4px 0;display: block;">
+                                    <input type="radio" name="product[klloom_license]" value="<?= $license->getValue() ?>" title="<?php /* @escapeNotVerified */ echo __($license->getLabel()) ?>" class="required-entry" data-validate="{required:true}" <?= ($license->getValue() == $licenseSelected) ? 'checked': ''; ?>>
+                                    <span><?= /* @escapeNotVerified */ __( $license->getLabel() ) ?></span>
+                                </label>
+
+                                <p style="color: #9A9A9A;font-size: 1.2rem;margin-top: 4px;margin-bottom: 5px;">
+                                    <?= $description[$license->getValue()] ?>
+                                </p>
+                                <a href="#" data-resume="<?= $license_resume ?>" class="show-license-resume" style="font-size: 1.2rem;">Learn more</a>
+                                <div class="webui-popover-content">
+                                    <?php
+                                    echo $this->getLayout()
+                                        ->createBlock('Magento\Framework\View\Element\Template')
+                                        ->setTemplate('Klloom_License::product/license/' . $license_resume . '.phtml')
+                                        ->toHtml();
+                                    ?>
+                                </div>
+                            </div>
+                        <?php }
+                    }
+
+                endif; ?>
+        </div>
+
+    </div>
+</fieldset>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Klloom_License/js/klloom_license": {}
+    }
+}
+</script>

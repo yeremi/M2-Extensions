@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="search_result_list">
+            <block class="Klloom\ProductComments\Block\Product\ProductList\Item\CommentLikeContainer"
+                   name="catalogsearch.product.commentandlike" as="commentandlike">
+                <block class="Klloom\ProductComments\Block\Product\ProductList\Item\CommentLikeContainer\Renderer"
+                       name="catalogsearch.product.commentandlike.render" as="commentandlikerender"
+                       template="Klloom_ProductComments::product/list/comment-like-container.phtml">
+                    <block class="Klloom\Productlike\Block\Product\ProductList\Item\Countlink" name="product.like.count"
+                           as="likescount" template="Klloom_Productlike::product/list/like.phtml"/>
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

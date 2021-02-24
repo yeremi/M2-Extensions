@@ -1,0 +1,76 @@
+<?php
+/**
+ *
+ */
+$items        = $block->getMyLikes();
+$_helperW     = $this->helper('Webkul\Marketplace\Helper\Data');
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+
+$image = 'new_products_content_widget_grid';
+?>
+<div class="klloom-hr"></div>
+<div class="block widget block-products-list grid" style="padding: 20px">
+
+    <?php if($items->count() > 0 ) { ?>
+    <div class="products-grid grid">
+        <div class="mdl-grid mdl-grid--no-spacing klloom-grid">
+            <?php foreach ($items as $_item):
+
+                $seller_id = false;
+                $shoptitle = '';
+                $avatar = $this->getViewFileUrl('images/avatar/no-image.svg');
+                $productImage = $_imagehelper->init($_item, $image)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(220)->getUrl();
+
+                $marketplaceProduct = $_helperW->getSellerProductDataByProductId((int)$_item->getId());
+                foreach ($marketplaceProduct as $value) {
+                    $seller_id = $value['seller_id'];
+                }
+                if ($seller_id) {
+                    $rowsocial = $_helperW->getSellerDataBySellerId($seller_id);
+                    foreach ($rowsocial as $seller) {
+                        if (!empty($seller['shop_title'])) {
+                            $shoptitle = '@' . $seller['shop_title'];
+                        }
+                        if ($seller->getLogoPic()) {
+                            $avatar = $_helperW->getMediaUrl() . 'avatar/' . $seller->getLogoPic();
+                        }
+                    }
+                }
+                ?>
+                <div id="<?= $_item->getId(); ?>" class="klloom-grid-item mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-desktop mdl-cell--2-col-phone">
+                    <div class="product-item-info">
+                        <div class="photographer-avatar-wrap">
+                            <div class="photographer-avatar">
+                                <div>
+                                    <span class="mdl-chip mdl-chip--contact">
+                                        <span class="mdl-chip__contact background-cover" style="background-image: url('<?= $avatar ?>')"></span>
+                                        <span class="mdl-chip__text"><?= $shoptitle ?></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a title="<?= $block->escapeHtml($_item->getName()) ?>"
+                           href="<?= $block->escapeUrl($_item->getProductUrl()) ?>"
+                           class="product-item-photo">
+                            <img src="<?php echo $productImage; ?>"/>
+                            <span class="photo-title"><?= $block->escapeHtml($_item->getName()) ?></span>
+                        </a>
+                        <div class="product-item-details">
+                            <?= $block->getProductCommentLikeHtml($_item) ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+
+    <?php } else { ?>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col-desktop mdl-typography--text-center" style="color: #a09a9a">
+                <p style="padding: 60px">You haven't liked any photos yet :(</p>
+            </div>
+        </div>
+    <?php } ?>
+
+</div>

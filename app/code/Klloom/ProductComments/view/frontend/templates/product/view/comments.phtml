@@ -1,0 +1,121 @@
+<?php
+// @codingStandardsIgnoreFile
+$helper  = $this->helper('Webkul\Marketplace\Helper\Data');
+$partner = $helper->getSeller();
+$avatar  = ($partner['logo_pic'] != 'noimage.png') ? $helper->getMediaUrl() . 'avatar/' . $partner['logo_pic'] : $this->getViewFileUrl('images/avatar/no-image.svg');
+
+$helper_comment        = $this->helper('Klloom\ProductComments\Helper\Data');
+$ObjectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+$commentCollection = $block->getCommentCollection();
+$customerId = $helper->getCustomerId();
+/**
+ * Check if user is logged in
+ * TODO Try to do better
+ */
+$context    = $ObjectManager->get('Magento\Framework\App\Http\Context');
+$isLoggedIn = $context->getValue(\Magento\Customer\Model\Context::CONTEXT_AUTH);
+$url  = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+$login_url = $block->getUrl('customer/account/login', array('referer' => base64_encode($url)));
+?>
+<div>
+
+    <?php if (!$isLoggedIn): ?>
+        <div class="comment-form" id="comment-form">
+            <div class="field">
+                <div class="control" style="float: left;width: calc(100% - 144px);display: inline;margin: 0;min-height: 32px;padding-bottom: 20px;">
+                    <input placeholder="You need to be logged in to have you say." type="text" style="border: solid 1px #b1b1b1; color: #b1b1b1;height: 34px;background: transparent;opacity: 1;" disabled>
+                </div>
+            </div>
+
+            <div class="actions-toolbar comment-form-actions" style="float: right;">
+                <div class="primary actions-primary" style="width: 100%">
+                    <a href="<?= $login_url; ?>" class="klloom-button-no-logged-in" style="opacity: 1;background: transparent;border: solid 1px #b1b1b1 !important;color: #b1b1b1 !important;" disabled><span><?= $block->escapeHtml(__('log in to comment')) ?></span></a>
+                </div>
+            </div>
+        </div>
+    <?php else: ?>
+        <form class="comment-form" method="post" id="comment-form" data-hasrequired="* Required Fields" data-mage-init='{"validation":{}}'>
+            <?= $block->getBlockHtml('formkey') ?>
+            <?= $block->getChildHtml('form_fields_before') ?>
+
+            <div class="field comment required" style="padding-left: 8px;">
+                <label for="comment_field" class="label" style="float: left;display: inline-block;">
+                    <i class="material-icons mdl-list__item-avatar photographer-avatar" style="background-image: url(<?= $avatar; ?>)"></i>
+                </label>
+                <div class="control" style="float: left;width: calc(100% - 135px);display: inline;margin: 0 0 0 12px;min-height: 32px;padding-bottom: 20px;">
+                    <textarea placeholder="<?= $block->escapeHtml(__('Comment')) ?>" name="comment" id="comment_field" rows="1" data-validate="{required:true}"></textarea>
+                    <p class="char-left"></p>
+                </div>
+            </div>
+
+            <?= $block->getChildHtml('form_fields_after'); ?>
+
+            <div class="actions-toolbar comment-form-actions" style="float: right;">
+                <div class="primary actions-primary" style="height: 42px;width: 100%">
+                    <button type="submit" class="klloom-flat-button" disabled><span><?= $block->escapeHtml(__('Comment')) ?></span></button>
+                </div>
+            </div>
+
+        </form>
+    <?php endif; ?>
+
+    <div style="clear: both; display: block"></div>
+    <?php if ($commentCollection->count() > 0 ): ?>
+    <?php //if ($comments) : ?>
+        <div class="klloom-hr"></div>
+
+        <style>
+            /*@media (max-width: 479px){*/
+                ul.klloom-mini-comment.mdl-list {
+                    padding-top: 25px;
+                    max-height: 300px;
+                    /*background: red;*/
+                    margin-bottom: 20px;
+                    overflow: scroll;
+                }
+            /*}*/
+        </style>
+
+        <ul class="klloom-mini-comment mdl-list" style="padding-top: 25px">
+            <?php
+            foreach ($commentCollection as $comment) {
+                $avatarLogo = $block->AvatarLogoPic($comment);
+                $photographer_name = 'Name';
+                ?>
+                <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-avatar" style="background-image: url(<?= $avatarLogo; ?>)"></i>
+                    <span class="comment-customer-name">
+                        @<?= $comment->getSellerShopTitle(); ?><br>
+                        <span class="comment-date"><?= $helper_comment->time_elapsed_string($comment->getCreatedAt()) ?></span>
+                    </span>
+
+                    <span class="mdl-list__item-text-body" style="display: inline-block">
+                      <?= $comment->getComment() ?>
+                  </span>
+                </span>
+                    <?php if ($isLoggedIn AND $comment->getCustomerId() == $customerId): ?>
+                        <a data-action="remove-comment" data-pi="<?= md5($this->getCurrentProduct()->getId()); ?>" data-digest="<?= md5($comment->getId()); ?>" class="mdl-list__item-secondary-action" href="javascript:;" style="margin-left: 12px" title="<?= $block->escapeHtml(__('Remove Comment')) ?>"><i class="material-icons" style="font-size: 1.2rem;font-weight: bold">close</i></a>
+                    <?php endif; ?>
+                </li>
+            <?php } ?>
+        </ul>
+    <?php //endif; ?>
+    <?php endif; ?>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "#comment-form": {
+        "Klloom_ProductComments/js/product_comments": {
+            "ajaxUrl"   : "<?= $this->getAjaxUrl(); ?>",
+            "ajaxUrlDelete"   : "<?= $this->getAjaxUrlDelete(); ?>",
+            "productId" : "<?= $this->getCurrentProduct()->getId(); ?>",
+            "productName" : "<?= $this->getCurrentProduct()->getName(); ?>",
+            "loader"    : {},
+            "redirect" : "<?= $login_url ?>"
+        }
+    }
+}
+</script>

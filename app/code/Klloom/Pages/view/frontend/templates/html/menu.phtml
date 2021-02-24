@@ -1,0 +1,11 @@
+<?php
+$stringHelper = $this->helper('Klloom\Pages\Helper\StringHelper');
+?>
+<div class="related-page-links mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-cell--middle mdl-typography--text-right">
+    <span style="color: #f19106; margin-bottom: 12px; display: block"><?= /* @escapeNotVerified */ __('Read also:') ?></span>
+    <div><a href="/behavior-guidelines" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/behavior-guidelines'); ?> ><?= /* @escapeNotVerified */ __('Behavior Guidelines') ?></a></div>
+    <div><a href="/contributor-agreement" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/contributor-agreement'); ?> ><?= /* @escapeNotVerified */ __('Contributor Agreement') ?></a></div>
+    <div><a href="/license-agreement" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/license-agreement'); ?> ><?= /* @escapeNotVerified */ __('License Agreement') ?></a></div>
+    <div><a href="/privacy-policy" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/privacy-policy'); ?> ><?= /* @escapeNotVerified */ __('Privacy Policy') ?></a></div>
+    <div><a href="/terms-of-use" <?=  /* @escapeNotVerified */ $stringHelper->menuActive('/terms-of-use'); ?> ><?= /* @escapeNotVerified */ __('Terms of Use') ?></a></div>
+</div>

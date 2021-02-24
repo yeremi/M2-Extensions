@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <photo>
+            <general>
+                <upload_photo_limit>30</upload_photo_limit>
+                <upload_photo_size>20000000</upload_photo_size>
+                <upload_photo_min_size>512000</upload_photo_min_size>
+            </general>
+        </photo>
+    </default>
+</config>

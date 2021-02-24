@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <block class="Klloom\LandingPage\Block\Link" name="top.go.item">
+            <arguments>
+                <argument name="class" xsi:type="string">go-home link</argument>
+                <argument name="label" xsi:type="string" translate="true">Go to Klloom Home</argument>
+                <argument name="path" xsi:type="string">start</argument>
+            </arguments>
+        </block>
+        <move element="top.go.item" destination="header-wrapper" after="minicart"/>
+    </body>
+</page>

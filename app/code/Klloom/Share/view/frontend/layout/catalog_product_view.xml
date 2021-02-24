@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--<referenceContainer name="product.info.klloom.counter">
+            <referenceBlock name="product.info.klloom_product_counter">
+                <block class="Magento\Catalog\Block\Product\View" name="klloom.share" template="Klloom_Share::product/view/share.phtml" after="-"/>
+            </referenceBlock>
+        </referenceContainer>-->
+        <block class="Klloom\Share\Block\Product" name="klloom.share" template="Klloom_Share::product/view/share.phtml" after="-"/>
+        <move element="klloom.share" destination="product.info.klloom.counter" after="-" />
+    </body>
+</page>

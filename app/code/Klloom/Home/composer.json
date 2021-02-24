@@ -1,0 +1,27 @@
+{
+  "name": "klloom/module-home",
+  "description": "N/A",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "require": {
+    "php": "7.0.2|7.0.4|~7.0.6|~7.1.0"
+  },
+  "authors": [
+    {
+      "name": "Yeremi Loli",
+      "email": "yeremi@klloom.com",
+      "homepage": "https://www.klloom.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "files": ["registration.php"],
+    "psr-4": {
+      "Klloom\\Home\\": ""
+    }
+  }
+}

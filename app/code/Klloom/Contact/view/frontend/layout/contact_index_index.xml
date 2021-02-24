@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Contact Klloom</title>
+        <meta name="description" content="We need your feedback to build a healthy community." />
+    </head>
+    <body>
+        <referenceBlock name="page.main.title">
+            <block class="Klloom\Contact\Block\Link" name="report-issue">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Report a Bug Instead</argument>
+                    <argument name="path" xsi:type="string">bug-report</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="page.wrapper">
+            <container name="contact-klloom-top" htmlTag="div" htmlClass="contact-klloom-top-wrap" before="main.content">
+                <block name="contact-klloom-top-banner" template="Klloom_Contact::top.phtml"/>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="contactForm" template="Klloom_Contact::form.phtml">
+            <referenceContainer name="form.additional.info"/>
+        </referenceBlock>
+
+        <referenceContainer name="form.additional.info">
+            <block class="Magento\Framework\View\Element\Template" name="form_additional_info_customer" template="Magento_Customer::additionalinfocustomer.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

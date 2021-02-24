@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="header-wrapper">
+        <referenceBlock name="top.search" remove="true" />
+    </referenceContainer>
+
+    <referenceContainer name="page.top">
+        <container name="klloom.home.banner" htmlClass="klloom-banner" htmlTag="div" before="-">
+            <block class="Klloom\Home\Block\Index" name="default_banner_home_page" template="Klloom_Home::home.phtml" />
+        </container>
+    </referenceContainer>
+
+    <referenceContainer name="page.wrapper">
+        <container name="klloom.category.wrap" htmlTag="div" htmlClass="klloom-category-wrap" before="main.content">
+            <block class="Klloom\ProductCategories\Block\Category\Toolbar" name="klloom.category.toolbar" template="Klloom_ProductCategories::category/toolbar.phtml" cacheable="false" />
+        </container>
+    </referenceContainer>
+
+    <referenceContainer name="content">
+        <block class="Klloom\Trending\Block\Data" name="klloom.trending" template="Klloom_Trending::trending.phtml" after="-" cacheable="false" />
+    </referenceContainer>
+</page>

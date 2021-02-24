@@ -1,0 +1,25 @@
+There is no no-color option ("less --help" for help)
+@klloomabusereport-icons-admin__font-name-path: '@{baseDir}Klloom_AbuseReport/fonts/klloom-icons';
+@klloomabusereport-icons-admin__font-name: 'klloom-icons';
+
+.lib-font-face(
+  @family-name:@klloomabusereport-icons-admin__font-name,
+  @font-path:  @klloomabusereport-icons-admin__font-name-path,
+  @font-weight: normal,
+  @font-style: normal
+);
+
+.admin__menu .item-reports.parent.level-0 > a:before {
+  font-family: @klloomabusereport-icons-admin__font-name;
+  content: "\e915";
+}
+.klloom-abusereport {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-color: #e3e3e3;
+  border-style: solid;
+  border-width: 0 0 1px;
+  margin-bottom: 3rem;
+  padding: 0 0 3.3rem 0;
+}

@@ -1,0 +1,121 @@
+<?php $categories = $block->getCategoryCollection(); ?>
+
+    <style>
+        .klloom-category-toolbar {
+            /*width: 100%;*/
+        }
+
+        .klloom-category-toolbar a {
+            color: #999999;
+            text-transform: inherit;
+            /*font-size: 1.3rem;*/
+            padding: 0 16px 0 16px;
+        }
+
+        .klloom-category-toolbar a:hover {
+            color: #35a8e0 !important;
+        }
+
+        .klloom-category-toolbar a.is-active {
+            color: #35a8e0
+        }
+
+        .klloom-category-toolbar .mdl-layout__tab-bar-button .material-icons {
+            color: #fff;
+            background: #999;
+            border-radius: 50%;
+        }
+
+        .klloom-category-toolbar .mdl-layout__tab-bar {
+            height: 48px;
+        }
+
+        body.start-index-index .klloom-category-toolbar,
+        body.catalog-product-view .klloom-category-toolbar,
+        body.catalogsearch-result-index .klloom-category-toolbar,
+        body.cms-home.cms-index-index .klloom-category-toolbar,
+        body.all-index-index .klloom-category-toolbar,
+        body.catalog-category-view .klloom-category-toolbar {
+            padding: 60px 20px;
+        }
+
+        body.catalog-product-view.page-layout-1column .page-footer {
+            margin-top: 0;
+        }
+
+        body.start-index-index .klloom-category-toolbar,
+        body.all-index-index .klloom-category-toolbar,
+        body.cms-home.cms-index-index .klloom-category-toolbar,
+        body.catalogsearch-result-index .klloom-category-toolbar,
+        body.catalog-product-view .klloom-category-toolbar,
+        body.catalog-category-view .klloom-category-toolbar {
+            max-width: 1240px;
+            margin: auto;
+        }
+
+        body.catalog-category-view .page-title-wrapper,
+        .klloom-category-wrap .page-title-wrapper,
+        body.catalog-product-view .klloom-category-toolbar header,
+        body.catalogsearch-result-index .klloom-category-toolbar header,
+        body.catalog-category-view .klloom-category-toolbar header {
+            /*padding-left: 20px;
+            padding-right: 20px;*/
+        }
+
+        body.catalog-category-view .klloom-category-toolbar,
+        body.catalogsearch-result-index .klloom-category-toolbar {
+            padding-top: 0;
+        }
+
+        body.catalog-category-view .page-title-wrapper,
+        .klloom-category-wrap .page-title-wrapper {
+            padding: 60px 20px 10px;
+            width: 100%;
+            max-width: 1240px;
+            margin: auto;
+        }
+
+        body.catalog-category-view .page-title-wrapper h1.page-title,
+        .klloom-category-wrap .page-title-wrapper h1.page-title {
+            margin: 0;
+            padding: 0;
+            font-size: 26px;
+        }
+
+        .mdl-layout__tab-bar-button.mdl-layout__tab-bar-left-button{
+            border-right: solid 3px #f7f7f7;
+        }
+
+        /* body.start-index-index #maincontent.page-main {
+            max-width: 1280px !important;
+        }*/
+
+        #maincontent.page-main {
+            max-width: 1280px;
+        }
+
+        body.catalog-product-view #maincontent.page-main {
+            max-width: 1280px;
+        }
+    </style>
+<?php
+if ($this->getRequest()->getFullActionName() == 'cms_index_index') {
+    //echo '<div class="klloom-hr"></div>';
+}
+?>
+    <div class="klloom-category-toolbar mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="position: relative">
+                <?php foreach ($categories as $category) {
+                    if ($category->getIsActive() AND $category->getProductCount() > 0) { ?>
+                        <a href="<?= $category->getUrl() ?>" title="<?= $category->getName() ?>" class="mdl-layout__tab <?= $block->isActive($category->getUrlKey()) ?>"><?= $category->getName() ?> <?= $category->getSku() ?> </a>
+                    <?php }
+                } ?>
+            </div>
+        </header>
+    </div>
+
+<?php
+if ($this->getRequest()->getFullActionName() == 'catalog_category_view' OR strpos($_SERVER['REQUEST_URI'], "catalogsearch") !== false OR $this->getRequest()->getFullActionName() == 'start_index_index') {
+    echo '<div class="klloom-hr"></div>';
+} ?>

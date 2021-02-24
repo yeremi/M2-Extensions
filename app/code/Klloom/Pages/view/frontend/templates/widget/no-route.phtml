@@ -1,0 +1,31 @@
+<div class="klloom-hr"></div>
+<style>
+    a.action.primary {
+        border-radius: 20px;
+        padding: 0 20px;
+        font-size: 1.1rem;
+        line-height: 2.9rem;
+        margin-right: 7px;
+    }
+</style>
+<div style="padding: 50px">
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+
+            <p class="color-text-light-blue">The page you requested was not found, and we have a fine guess why.</p>
+            <br/>
+            <p>If you typed the URL directly, please make sure the spelling is correct.
+                If you clicked on a link to get here, the link may be outdated.</p>
+            <br/>
+            <p class="color-text-light-blue">What can you do?</p>
+            <br/>
+            <p>
+                Go back to the previous page.
+                Use the search bar at the top of the page to search for some photos.
+                Follow these links bellow to get you back on track!
+            </p>
+            <br/>
+            <a href="<?= $block->getUrl('') ?>" title="Klloom" class="action primary">home</a> <a href="<?php echo $block->getUrl('customer/account') ?>" title="My Account" class="action primary">my account</a>
+        </div>
+    </div>
+</div>

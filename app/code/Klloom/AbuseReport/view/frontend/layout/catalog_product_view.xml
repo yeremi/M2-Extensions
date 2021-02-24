@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <container name="klloom.report.abuse" htmlTag="div" htmlClass="klloom-report-abuse mdl-grid mdl-grid--no-spacing" after="product.info.klloom.counter">
+                <block class="Klloom\AbuseReport\Block\Product" name="abuse_report" template="Klloom_AbuseReport::product/view/abuse_report.phtml"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

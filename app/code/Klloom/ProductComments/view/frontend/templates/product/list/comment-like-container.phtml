@@ -1,0 +1,88 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+// @codingStandardsIgnoreFile
+$_productCollection = $block->getCommentCollection();
+$searchHelper = $this->helper(\Magento\Search\Helper\Data::class);
+$comments = $block->getCommentCollection();
+?>
+<div class="actions-secondary" data-role="add-to-links">
+
+     <?= $block->getChildHtml('likescount')    ?>
+
+    <a href="<?= $block->getProduct()->getProductUrl() ?>" class="icon-comment-klloom" data-action="comment"></a>
+
+    <a href="javascript:;" class="klloom-tooltip counter-number-small"><?= $comments->count() ?></a>
+    <?php if (!$comments ||  $comments->count()<1) {  ?>
+        <div class="webui-popover-content">
+            <?= /* @escapeNotVerified */ __('0 Comment') ?> <a style="float: right" href="<?= /* @escapeNotVerified */ $block->getProduct()->getProductUrl() ?>"><?= /* @escapeNotVerified */ __('Add Comment') ?></a>
+        </div>
+    <?php } else {  ?>
+        <div class="klloom-popup-wrapper webui-popover-content">
+            <div class="kp-inner">
+
+                <div class="kp-header"><?= /* @escapeNotVerified */ $comments->getSize() . __(' Comments') ?>
+                    <a style="float: right" href="<?= /* @escapeNotVerified */ $block->getProduct()->getProductUrl() ?>"><?= /* @escapeNotVerified */ __('View All') ?></a>
+                </div>
+
+                <div class="klloom-hr" style="margin: 12px 0"></div>
+
+                <p style="padding: 5px 8px 8px 8px"><?= __('Last comments') ?></p>
+
+                <table id="comments-list" style="margin:0; padding: 0">
+                    <tbody>
+                    <?php
+                        foreach ($comments as $comment){
+                            $avatarLogo = $block->AvatarLogoPic($comment); ?>
+                            <tr style="margin:0; padding: 0">
+                                <td style="width: 38px; vertical-align: top; margin:0; padding: 0">
+                                    <i class="material-icons mdl-list__item-avatar background-cover" style="background-image: url('<?= $avatarLogo; ?>')"></i>
+                                </td>
+                                <td class="info-column" style="margin:0; padding: 0">
+                                    <a class="comment-customer-name">@<?= $comment->getSellerShopTitle(); ?></a>
+                                    <span class="comment-date">
+                                <?= $this->helper('Klloom\ProductComments\Helper\Data')->time_elapsed_string($comment->getCreatedAt()) ?>
+                                </span>
+                                    <p class="comment-comment">
+                                        <?= $this->helper('Klloom\Pages\Helper\StringHelper')->trim_text($comment->getComment(), 95); ?>
+                                    </p>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+
+                <div class="klloom-hr" style="margin: 12px 0; margin-top:21px"></div>
+
+                <a style="text-align: center;display: block;padding: 8px;margin-bottom: 4px; font-size: 12px" href="<?= /* @escapeNotVerified */ $block->getProduct()->getProductUrl() ?>"><?= /* @escapeNotVerified */ __('Add Comment') ?></a>
+
+            </div>
+        </div>
+    <?php } ?>
+
+    <?php
+    /**
+     * TODO AMIT TAGS
+     * Show tags just if has tags
+     */ ?>
+    <?php $tags=$block->getProductTags(); ?>
+    <?php if ($block->getProduct()->getTags() && !is_null($block->getProduct()->getTags())):
+        foreach ($tags as $tag) {
+            $taglink[] = '<a href="' . $searchHelper->getResultUrl() . '?q=' . trim($tag) . '">' . $tag . '</a>';
+        }
+        ?>
+        <a href="javascript:;" class="klloom-tooltip icon-tag-klloom" data-action="tags"></a>
+        <div class="webui-popover-content" style="color:#000">
+            <?= implode(',', $taglink) ?>
+        </div>
+    <?php endif;?>
+
+    <?= $block->getChildHtml('purchase') ?>
+
+</div>

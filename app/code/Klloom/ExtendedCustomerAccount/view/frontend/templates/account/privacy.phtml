@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Framework\View\Element\Html\Links */
+?>
+<style type="text/css">
+    @media only screen and (max-width: 767px){
+        .block-collapsible-nav.privacy-nav{
+            top: 102px;
+            z-index: 3;
+        }
+    }
+</style>
+<div class="block privacy-nav block-collapsible-nav">
+    <div class="title block-collapsible-nav-title" data-mage-init='{"toggleAdvanced": {"toggleContainers": "#block-collapsible-nav-privacy", "selectorsToggleClass": "active"}}'>
+        <strong><?= $block->escapeHtml(__('Privacy')) ?></strong>
+    </div>
+    <div class="content block-collapsible-nav-content" id="block-collapsible-nav-privacy">
+        <nav class="account-nav">
+            <ul class="privacy-nav nav items">
+                <?= $block->getChildHtml() ?>
+            </ul>
+        </nav>
+    </div>
+</div>

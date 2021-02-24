@@ -1,0 +1,116 @@
+<?php
+// @codingStandardsIgnoreFile
+/** @var \Klloom\BugReport\Block\ContactForm $block */
+?>
+<style>
+    body.bug-report-index-index .klloom-content-wrapper {
+        max-width: 1240px;
+        margin: auto;
+        padding: 0 20px 0;
+    }
+
+    body.bug-report-index-index main#maincontent {
+        padding: 0;
+    }
+
+    body.bug-report-index-index main#maincontent {
+        max-width: 650px;
+        margin: auto;
+    }
+
+    @media (min-width: 768px) {
+        body.bug-report-index-index main#maincontent {
+            border-left: solid 1px #c6c6c5;
+            border-right: solid 1px #c6c6c5;
+        }
+
+        body.bug-report-index-index .page-title-wrapper {
+            padding: 50px 50px 10px;
+        }
+
+        body.bug-report-index-index form.form.bug {
+            padding: 50px;
+        }
+
+        body.bug-report-index-index .page-title-wrapper a {
+            display: inline-block;
+            float: right;
+            height: 37px;
+            line-height: 53px;
+        }
+    }
+
+    @media (max-width: 479px) {
+        body.bug-report-index-index form.form.bug,
+        body.bug-report-index-index .page-title-wrapper {
+            padding: 20px;
+        }
+
+        body.bug-report-index-index .columns .column.main {
+            padding-bottom: 0;
+        }
+    }
+</style>
+<div class="klloom-hr"></div>
+<form class="form bug"
+      action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+      id="bug-form"
+      method="post"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+      data-mage-init='{"validation":{}}'
+      enctype="multipart/form-data" >
+
+    <fieldset class="fieldset">
+
+        <div class="field name required">
+            <label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
+            <div class="control">
+                <input name="name" id="name" title="<?= $block->escapeHtmlAttr(__('Name')) ?>" value="<?= $block->escapeHtmlAttr($this->helper('Klloom\BugReport\Helper\Data')->getPostValue('name') ?: $this->helper('Klloom\BugReport\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field email required">
+            <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+            <div class="control">
+                <input name="email" id="email" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" value="<?= $block->escapeHtmlAttr($this->helper('Klloom\BugReport\Helper\Data')->getPostValue('email') ?: $this->helper('Klloom\BugReport\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+        <div class="field url">
+            <label class="label" for="url"><span><?= $block->escapeHtml(__('Url')) ?></span></label>
+            <div class="control">
+                <input name="url" id="url" title="<?= $block->escapeHtmlAttr(__('Url')) ?>" value="<?= $block->escapeUrl($block->getLastUrl()) ?>" class="input-text" type="url" />
+                <div for="url" generated="true" class="mage-info">Paste here the url where you had difficulties</div>
+            </div>
+        </div>
+        <div class="field comment required">
+            <label class="label" for="comment"><span><?= $block->escapeHtml(__('Tell us a bit about the bug')) ?></span></label>
+            <div class="control">
+                <textarea name="comment" id="comment" title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>" class="input-text" cols="5" rows="7" data-validate="{required:true}"><?= $block->escapeHtml($this->helper('Klloom\BugReport\Helper\Data')->getPostValue('comment')) ?></textarea>
+            </div>
+        </div>
+
+        <div class="field attachment">
+            <label class="label" for="attachment"><span><?= $block->escapeHtml(__('Attach screenshot:')) ?></span></label>
+            <div class="control">
+                <input name="MAX_FILE_SIZE" type="hidden" value="2000000" />
+                <input name="attachment" id="attachment" title="<?= $block->escapeHtmlAttr(__('Url')) ?>" value="" class="input-text" type="file" />
+            </div>
+        </div>
+
+        <?= $block->getChildHtml('form.additional.info') ?>
+    </fieldset>
+    <div class="actions-toolbar">
+            <input type="hidden" name="hideit" id="hideit" value=""/>
+            <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit klloom-large-button" style="height: 43px;box-shadow: none;">
+                <span><?= $block->escapeHtml(__('Submit')) ?></span>
+            </button>
+    </div>
+</form>
+<!--
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Klloom_BugReport/js/bug_report": {}
+    }
+}
+</script>
+-->

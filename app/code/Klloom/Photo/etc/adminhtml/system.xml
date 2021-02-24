@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="phototab" translate="label" sortOrder="400">
+            <label>Photo</label>
+        </tab>
+        <section id="photo" translate="label" type="text" sortOrder="300" showInDefault="1">
+            <class>separator-top</class>
+            <label>Photo Configuration</label>
+            <tab>phototab</tab>
+            <resource>Klloom_Photo::admin_setting</resource>
+            <group id="general" type="text" sortOrder="4" showInDefault="1">
+                <label>General</label>
+                <field id="upload_photo_limit" translate="label" type="text" sortOrder="12" showInDefault="1">
+                    <label>Upload Limit</label>
+                    <validate>validate-number required-entry</validate>
+                    <comment>Total photos per photographer</comment>
+                </field>
+                <field id="upload_photo_size" translate="label" type="text" sortOrder="12" showInDefault="1">
+                    <label>Upload Photo Size</label>
+                    <validate>validate-number required-entry</validate>
+                    <comment>20000000 = 20MB</comment>
+                </field>
+                <field id="upload_photo_min_size" translate="label" type="text" sortOrder="12" showInDefault="1">
+                    <label>Upload Photo Min Size</label>
+                    <validate>validate-number required-entry</validate>
+                    <comment>512000 = 500KB</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
